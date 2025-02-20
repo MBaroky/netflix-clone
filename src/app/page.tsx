@@ -15,7 +15,6 @@ export default function Home() {
   <DefaultVideoLayout thumbnails="https://files.vidstack.io/sprite-fight/thumbnails.vtt" icons={defaultLayoutIcons} />
 </MediaPlayer>
       </main>
-
     </div>
   );
 }
