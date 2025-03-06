@@ -1,7 +1,10 @@
+/* styles.css */
+/* @import '~video.js/dist/video-js.css';
+@import '~videojs-ima/dist/videojs.ima.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('@vidstack/react/player/styles/base.css');
 
 
 :root {
@@ -17,7 +20,14 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-zinc-900 h-full overflow-x-hidden;
+
+}
+
+#__next {
+  @apply h-full;
+}
+
+html {
+  @apply h-full;
 }
