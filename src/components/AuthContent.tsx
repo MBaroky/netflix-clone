@@ -5,13 +5,14 @@ import RegisterForm from './RegisterForm'
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
-import { useToggleVariant } from '@/hooks/useToggleVariant';
+// import { useToggleVariant } from '@/hooks/useToggleVariant';
+import { useLocalStorage } from 'usehooks-ts'
 
 
-
+type Variant = 'login' | 'register'
 function AuthContent() {
-    const [variant, toggleVariant] = useToggleVariant();
-
+    // const [variant, toggleVariant] = useToggleVariant();
+const [variant, setVariant, removeVariant] = useLocalStorage<Variant>('variant', 'login');
   return (
     <div className="bg-black bg-opacity-70 px-16  py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
 
@@ -33,7 +34,7 @@ function AuthContent() {
 
 
                         <p className='text-neutral-500 mt-12'>
-                            {variant === "login" ? "First time here?":"Already have an account?"} <span onClick={toggleVariant} className='text-white ml-1 hover:underline cursor-pointer'>
+                            {variant === "login" ? "First time here?":"Already have an account?"} <span onClick={()=> setVariant(variant === 'login'? 'register': 'login')} className='text-white ml-1 hover:underline cursor-pointer'>
                                 {
                                 variant === 'login' ? 'Create an account' : 'Sign in'
                                 }

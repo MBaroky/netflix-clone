@@ -2,13 +2,13 @@ import { registerFormAction } from '@/lib/utils'
 import React from 'react'
 import Input from './Input'
 import SubmitButton from './SubmitButton'
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 function RegisterForm() {
     const router = useRouter();
 
     const handleSubmit = async (formData: FormData) => {
-        registerFormAction(formData, () => router.push('/'));
+        registerFormAction(formData, () => router.push("/"));
     };
     // TODO: move the register form logic in here
     return (

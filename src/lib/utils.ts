@@ -1,7 +1,5 @@
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
-import Router from "next/router";
 
 
 export const loginFormAction =

@@ -1,14 +1,13 @@
-import { signIn } from 'next-auth/react';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { loginFormAction } from '@/lib/utils';
 
 function LoginForm() {
     const router = useRouter();
 
     const handleSubmit = async (formData:FormData) => {
-        loginFormAction(formData, () => router.push('/'));
+        loginFormAction(formData, () => router.push("/"));
     };
 
     return (
