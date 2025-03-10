@@ -1,18 +1,16 @@
-import { NextPageContext } from "next";
 import { getSession } from "next-auth/react"
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
-export default async (context: NextPageContext) => {
-    const session = await getSession();
-    console.log(session)
-    if (!session) {
-      return {
-        redirect: {
-          destination: "/auth",
-          permanent: false,
-        },
-      };
-    }
-    return {
-      props: {},
+export default () => {
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const session = await getSession();
+      if (!session) {
+        redirect("/auth");
+      }
     };
+    fetchSession();
+  }, []);
 }

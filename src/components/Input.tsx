@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+
+import  { useState } from "react";
 
 interface InputProps {
     id: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    value: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    value?: string;
     label: string;
     type?: string;
 }
@@ -11,11 +13,12 @@ interface InputProps {
 
 const Input:React.FC<InputProps> = ({
     id,
-    onChange,
-    value,
+    // onChange,
+    // value,
     label,
     type,
 }) => {
+    const [value, setValue] = useState('');
     return (
         <div className="relative">
 
@@ -33,8 +36,9 @@ const Input:React.FC<InputProps> = ({
             "
             placeholder=" "
             value={value}
-            onChange={onChange}
+            onChange={e => setValue(e.target.value)}
             type={type}
+            name={id}
             />
             <label
             className="
