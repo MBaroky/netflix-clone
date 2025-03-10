@@ -1,10 +1,14 @@
-"use client";
 import LogoutButton from "@/components/LogoutButton";
 import VideoPlayer from "@/components/VideoPlayer";
-import useAuthRedirect  from "@/hooks/useAuthRedirect";
+import { authOptions } from "@/lib/authOptions";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  useAuthRedirect();
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect("/auth");
+  }
   const videoJsOptions = {
     autoplay: true,
     controls: true,
@@ -24,12 +28,17 @@ export default function Home() {
     console.log("Player is ready");
   };
   return (
+
     <div>
-      <div className="text-center text-red-700 text-4xl">
-        <h2>Netflix clone</h2>
-        <LogoutButton />
-      </div>
-      {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
+      {session && (
+        <>
+          <div className="text-center text-red-700 text-4xl">
+            <h2>Netflix clone</h2>
+            <LogoutButton />
+          </div>
+          {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
+        </>
+      )}
     </div>
   );
 }

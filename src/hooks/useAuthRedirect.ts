@@ -1,8 +1,9 @@
+"use client";
 import { getSession } from "next-auth/react"
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
-export default () => {
+export const useAuthRedirect =  () => {
 
   useEffect(() => {
     const fetchSession = async () => {
