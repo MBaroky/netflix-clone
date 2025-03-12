@@ -1,26 +1,28 @@
 "use client";
-import React from 'react'
-import LoginForm from './LoginForm'
-import RegisterForm from './RegisterForm'
+import { ReactNode } from 'react'
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
 // import { useToggleVariant } from '@/hooks/useToggleVariant';
 import { useLocalStorage } from 'usehooks-ts'
 
+interface AuthContentProps {
+    loginForm: ReactNode;
+    registerForm: ReactNode;
+}
 
 type Variant = 'login' | 'register'
-function AuthContent() {
+function AuthContent({loginForm, registerForm}: AuthContentProps) {
     // const [variant, toggleVariant] = useToggleVariant();
 const [variant, setVariant, removeVariant] = useLocalStorage<Variant>('variant', 'login');
   return (
     <div className="bg-black bg-opacity-70 px-16  py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
 
-                       {variant === 'login' ? (
-                        <LoginForm  />
-                       ) : (
-                        <RegisterForm />
-                       )}
+                       {variant === 'login' ?
+                        (loginForm)
+                        :
+                        (registerForm)
+                       }
 
                         <div className='flex flex-row items-center gap-4 mt-8 justify-center'>
                             <div onClick={() => signIn('google', {callbackUrl: '/'})} className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'>

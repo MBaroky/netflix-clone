@@ -1,3 +1,4 @@
+"use client";
 import Input from './Input';
 import SubmitButton from './SubmitButton';
 import { redirect, useRouter } from 'next/navigation';

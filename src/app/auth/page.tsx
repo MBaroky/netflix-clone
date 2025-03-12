@@ -1,4 +1,6 @@
 import AuthContent from '@/components/AuthContent';
+import LoginForm from '@/components/LoginForm';
+import RegisterForm from '@/components/RegisterForm';
 import { authOptions } from '@/lib/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -20,7 +22,7 @@ async function  AuthPage() {
                 <img className='h-12' src="/images/logo.png" alt="logo" />
             </nav>
             <div className='flex justify-center'>
-                <AuthContent  />
+                <AuthContent loginForm={<LoginForm />} registerForm={<RegisterForm />} />
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+"use client";
 import { registerFormAction } from '@/lib/utils'
 import React from 'react'
 import Input from './Input'
@@ -10,7 +11,7 @@ function RegisterForm() {
     const handleSubmit = async (formData: FormData) => {
         registerFormAction(formData, () => router.push("/"));
     };
-    // TODO: move the register form logic in here
+    // [x]: move the register form logic in here
     return (
         <>
             <h2 className='text-white text-4xl mb-8 font-semibold'>
