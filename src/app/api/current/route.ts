@@ -1,19 +1,20 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import {  NextRequest, NextResponse } from "next/server";
 
 import serverAuth from "@/lib/serverAuth";
+import { NextApiRequest } from "next";
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest) {
     if (req.method !== 'GET') {
-        return res.status(405).json({ error: 'Method not allowed' });
+        return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
     }
 
     try {
         const { currentUser } = await serverAuth(req);
 
-        return res.status(200).json(currentUser);
+        return NextResponse.json(currentUser, { status: 200 });
     } catch (error) {
         console.log(error);
-        return res.status(400).json({ error });
+        return NextResponse.json({ error }, { status: 400 });
     }
 }
 
