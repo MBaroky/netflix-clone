@@ -1,9 +1,9 @@
-import {  NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import serverAuth from "@/lib/serverAuth";
-import { NextApiRequest } from "next";
+import { NextApiResponse } from "next";
 
-async function handler(req: NextApiRequest) {
+async function handler(req: NextRequest) {
     if (req.method !== 'GET') {
         return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
     }

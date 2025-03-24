@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./authOptions";
 
 
-const serverAuth = async (req: NextApiRequest) => {
+const serverAuth = async (req: NextRequest) => {
     // const session = await getSession({ req });
     const session = await getServerSession(authOptions)
 
