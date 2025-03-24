@@ -3,7 +3,6 @@
 import useSWR from "swr"; // like reactQuery
 
 import fetcher from "@/lib/fetcher"
-import { useServerFetch } from "./useServerFetch";
 
 const useCurrentUser = () => {
     const {data, error, isLoading, mutate} = useSWR("/api/current", fetcher);

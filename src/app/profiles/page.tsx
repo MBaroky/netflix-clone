@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Profile = () => {
+function Profiles() {
   return (
-    <div>Profile</div>
+    <div className='text-white'>Profiles</div>
   )
 }
+
+export default Profiles

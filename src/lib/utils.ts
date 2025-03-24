@@ -3,26 +3,26 @@ import { signIn } from "next-auth/react";
 
 
 export const loginFormAction =
-async (formData: FormData, callBackFun:CallableFunction) => {
+async (formData: FormData, callBackFun?:CallableFunction) => {
  const email = formData.get('email');
  const password = formData.get('password');
  try {
    const result = await signIn('credentials', {
      email,
      password,
-     redirect: false,
-     callbackUrl: '/',
+     callbackUrl: '/profiles',
    });
    if (result?.error) {
      console.log(result.error);
    } else {
+    if(callBackFun)
      callBackFun();
    }
  } catch (error) {
    console.log(error);
  }
 }
-export const registerFormAction = async (formData: FormData, callBackFun:CallableFunction) => {
+export const registerFormAction = async (formData: FormData, callBackFun?:CallableFunction) => {
  const email = formData.get('email') as string;
  const name = formData.get('name') as string;
  const password = formData.get('password') as string;
@@ -32,7 +32,9 @@ export const registerFormAction = async (formData: FormData, callBackFun:Callabl
      name,
      password,
    });
-   loginFormAction(formData, callBackFun);
+   loginFormAction(formData
+    // , callBackFun
+  );
  } catch (error) {
    console.log(error);
  }
