@@ -1,7 +1,7 @@
 "use client";
 import { registerFormAction } from '@/lib/utils'
 import React from 'react'
-import Input from './Input'
+import Input from '../Input'
 import SubmitButton from './SubmitButton'
 
 function RegisterForm() {

@@ -1,5 +1,5 @@
 "use client";
-import Input from './Input';
+import Input from '../Input';
 import SubmitButton from './SubmitButton';
 import { loginFormAction } from '@/lib/utils';
 

@@ -1,6 +1,6 @@
-import AuthContent from '@/components/AuthContent';
-import LoginForm from '@/components/LoginForm';
-import RegisterForm from '@/components/RegisterForm';
+import AuthContent from '@/components/auth/AuthContent';
+import LoginForm from '@/components/auth/LoginForm';
+import RegisterForm from '@/components/auth/RegisterForm';
 import { authOptions } from '@/lib/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';

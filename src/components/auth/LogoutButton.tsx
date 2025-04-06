@@ -4,9 +4,9 @@ import { signOut } from "next-auth/react";
 
 import React from 'react'
 
-function LogoutButton() {
+function LogoutButton({children}: {children: React.ReactNode}) {
   return (
-    <button className="h-10 w-full bg-white" onClick={()=> signOut()}>Logout</button>
+    <button onClick={()=> signOut()}>{children}</button>
 
   )
 }

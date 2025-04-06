@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import SpeedControl from "./SpeedControl";
+import SpeedControl from "@/components/videoplayer/SpeedControl";
 import 'videojs-contrib-ads';
 import 'videojs-ima';
 import Player from "video.js/dist/types/player";

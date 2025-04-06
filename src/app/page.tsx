@@ -1,6 +1,7 @@
-import LogoutButton from "@/components/LogoutButton";
+import LogoutButton from "@/components/auth/LogoutButton";
+import Navbar from "@/components/navbar/Navbar";
 import UserWelcome from "@/components/UserWelcome";
-import VideoPlayer from "@/components/VideoPlayer";
+import VideoPlayer from "@/components/videoplayer/VideoPlayer";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -35,11 +36,7 @@ export default async function Home() {
     <div>
       {session && (
         <>
-          <div className="text-center ">
-            <h2 className="text-red-700 text-4xl">Netflix clone</h2>
-            <UserWelcome />
-            <LogoutButton />
-          </div>
+          <Navbar />
           {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
         </>
       )}
