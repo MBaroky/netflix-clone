@@ -1,8 +1,10 @@
 "use client"
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 
 import classNames from "classnames";
+import { BsChevronDown } from "react-icons/bs";
+import { useOnClickOutside } from "usehooks-ts";
 
 interface DropDownMenuProps {
   children?: React.ReactNode;
@@ -10,19 +12,28 @@ interface DropDownMenuProps {
   width?: string;
   menuButton: React.ReactNode; // Add a prop for the menu button
   direction?: string;
+  arrow?: boolean;
 }
 
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton, direction, ...props }) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton, direction, arrow, ...props }) => {
 
   const [showDropDown, setShowDropDown] = useState(false);
 
+  // Handle click outside to close the dropdown
+  const ref = useRef(null)
+  // @ts-ignore
+  useOnClickOutside(ref, () => {
+    setShowDropDown(false)
+  });
+
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <div
         onClick={() => setShowDropDown(prev => !prev)}
         className={`${props.className && props.className } flex flex-row items-center gap-2 cursor-pointer`}
       >
         {menuButton} {/* Render the menu button */}
+        {arrow && <BsChevronDown className={`text-white transition ${showDropDown? 'rotate-180':'rotate-0'}`} />}
       </div>
       {showDropDown && (
         <div

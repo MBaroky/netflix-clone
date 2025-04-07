@@ -10,10 +10,7 @@ type MobileMenuProps = {
 
 const MobileButton = () => {
   return (
-    <>
       <p className='text-white text-sm'>Browse</p>
-      <BsChevronDown className='text-white transition' />
-    </>
   );
 };
 
@@ -23,6 +20,7 @@ const MobileMenu = ({ data }: MobileMenuProps) => {
   return (
     <>
       <DropDownMenu
+        arrow
         menuButton={<MobileButton />}
         width='200'
         className='

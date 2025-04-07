@@ -5,7 +5,6 @@ import LogoutButton from '../auth/LogoutButton'
 
 const AccountButton = () => {
   return (
-    <>
     <div className='
       w-6
       h-6
@@ -16,8 +15,6 @@ const AccountButton = () => {
       bg-gray-100'>
         <img src="/images/profile-blue.jpg" alt="Profile" />
     </div>
-    <BsChevronDown className='text-white transition' />
-    </>
   )
 }
 
@@ -32,7 +29,7 @@ const AccountMenu
     gap-2
     relative
     cursor-pointer'>
-        <DropDownMenu width='200' direction='right' menuButton={<AccountButton />} >
+        <DropDownMenu arrow width='200' direction='right' menuButton={<AccountButton />} >
             <div className='px-3 group/item flex flex-row items-center gap-3 w-full'>
                 <img src="images/profile-blue.jpg" alt="profile" className='w-8 rounded-md' />
                 <p className='text-white text-sm group-hover/item:underline'>username</p>

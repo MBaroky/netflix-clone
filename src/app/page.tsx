@@ -1,5 +1,6 @@
 import LogoutButton from "@/components/auth/LogoutButton";
 import Navbar from "@/components/navbar/Navbar";
+import Billboard from "@/components/sections/Billboard";
 import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
 import { authOptions } from "@/lib/authOptions";
@@ -37,6 +38,7 @@ export default async function Home() {
       {session && (
         <>
           <Navbar />
+          <Billboard />
           {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
         </>
       )}

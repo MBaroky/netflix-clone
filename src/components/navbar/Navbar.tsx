@@ -1,9 +1,11 @@
 // Navbar.tsx
 import React from "react";
-import NavbarItem from "./NavbarItem";
 import { BsBell, BsChevronDown, BsSearch } from "react-icons/bs";
+
+import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
+import NavBarBg from "./NavBarBg";
 
 const navList = [
   { label: "Home" },
@@ -16,7 +18,7 @@ const navList = [
 
 function Navbar() {
   return (
-    <nav className='w-full fixed z-40'>
+    <nav className='w-full fixed z-40 isolate top-0'>
       <div
         className='
             px-4
@@ -27,8 +29,6 @@ function Navbar() {
             justify-between
             transition
             duration-500
-            bg-zinc-900
-            bg-opacity-90
         '>
         <img
           src='/images/logo.png'
@@ -91,6 +91,7 @@ function Navbar() {
           <AccountMenu />
         </div>
       </div>
+      <NavBarBg />
     </nav>
   );
 }
