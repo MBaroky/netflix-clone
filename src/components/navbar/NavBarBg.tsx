@@ -4,8 +4,8 @@ import React from 'react'
 
 const NavBarBg = () => {
     const [scrollY, setScrollY] = React.useState(0);
-    useScrollListener((scrollY) => {
-        setScrollY(scrollY);
+    useScrollListener((scrollValue) => {
+        setScrollY(scrollValue);
     });
   return (
     scrollY > 0 &&
