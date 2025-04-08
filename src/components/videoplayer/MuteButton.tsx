@@ -13,7 +13,6 @@ const MuteButton: React.FC<MuteButtonProps> = ({ videoRef }) => {
   const [isMuted, setIsMuted] = useState<boolean>(initialMuted || true);
   const [muted, setMuted] = useLocalStorage(LocalStorageKeys.MUTED, isMuted);
 
-  console.log("muted", isMuted);
   if (videoRef.current) {
 
     videoRef.current.muted = Boolean(isMuted);

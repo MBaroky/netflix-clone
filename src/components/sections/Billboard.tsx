@@ -4,11 +4,16 @@ import React from 'react'
 
 import {AiOutlineInfoCircle} from 'react-icons/ai'
 import MuteButton from '@/components/videoplayer/MuteButton'
+import useVideoDuration from '@/hooks/useVideoDuration'
 
 const Billboard = () => {
 const {data} = useBillboard();
 const videRef = React.useRef<HTMLVideoElement>(null);
-
+useVideoDuration({
+  videoRef: videRef,
+  startTime: 0,
+  stopTime: 25,
+})
   return (
     <div className='relative h-[56.25vw]'>
         <video
