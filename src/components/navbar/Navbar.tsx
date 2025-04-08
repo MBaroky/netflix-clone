@@ -6,6 +6,7 @@ import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
 import NavBarBg from "./NavBarBg";
+import DropDownMenu from "./DropDownMenu";
 
 const navList = [
   { label: "Home" },
@@ -78,6 +79,11 @@ function Navbar() {
           </div>
 
           {/* // Notification */}
+          <DropDownMenu
+          pointer
+          direction="center"
+          width="200px"
+          menuButton={
           <div
             className='
                 text-gray-200
@@ -86,6 +92,9 @@ function Navbar() {
                 transition'>
             <BsBell size={20} />
           </div>
+        }>
+            <p className="text-white p-2">notifications go there</p>
+          </DropDownMenu>
 
           {/* // Account Menu */}
           <AccountMenu />

@@ -11,11 +11,13 @@ interface DropDownMenuProps {
   className?: string;
   width?: string;
   menuButton: React.ReactNode; // Add a prop for the menu button
-  direction?: string;
+  direction?: "left" | "right" | "center";
+  // Add a prop for the direction of the dropdown
   arrow?: boolean;
+  pointer?: boolean
 }
 
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton, direction, arrow, ...props }) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton, direction, arrow, pointer, ...props }) => {
 
   const [showDropDown, setShowDropDown] = useState(false);
 
@@ -26,6 +28,23 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton
     setShowDropDown(false)
   });
 
+  const pointerClasses = classNames({
+    'mt-[20px]': pointer,
+    'mt-2': !pointer,
+    [`before:content-[""] before:absolute before:-top-[12px] before:mt-[1px] before:${direction?direction:'left'}-0 before:border-x-transparent before:border-t-transparent before:border-b-black before:border-x-[12px] before:border-b-[12px]`]: pointer,
+    'before:left-0': direction === "left",
+    'before:right-0': direction === "right",
+    'before:left-1/2': direction === "center",
+    'before:-translate-x-1/2': direction === "center",
+  })
+
+  const bubblePositionClasses = classNames({
+    'left-0': direction === "left",
+    'right-0': direction === "right",
+    'left-1/2': direction === "center",
+    'translate-x-[-50%]': direction === "center",
+  })
+
   return (
     <div className="relative" ref={ref}>
       <div
@@ -35,18 +54,14 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ children, width, menuButton
         {menuButton} {/* Render the menu button */}
         {arrow && <BsChevronDown className={`text-white transition ${showDropDown? 'rotate-180':'rotate-0'}`} />}
       </div>
+
+      {/* bubble */}
       {showDropDown && (
         <div
-          className={`bg-black absolute top-8 py-5 flex-col border-2 border-gray-800 flex`}
+          className={`bg-black absolute top-full py-5 flex-col border-2 border-gray-800 flex z-50 ${bubblePositionClasses} ${pointerClasses}`}
           style={{
             minWidth: width? parseInt(width) : undefined,
-            left: direction === "right" ? undefined : 0,
-            right: direction === "right" ? 0 : undefined,
-            zIndex: 100,
           }}
-
-            // ` ${classWidth}
-            //     bg-black absolute top-8 ${classPostition} py-5 flex-col border-2 border-gray-800 flex`}
         >
           <div className="flex flex-col gap-4">
             {children}
