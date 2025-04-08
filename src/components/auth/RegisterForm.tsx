@@ -1,5 +1,5 @@
 "use client";
-import { registerFormAction } from '@/lib/utils'
+import { registerFormAction } from '@/utils/authUtils'
 import React from 'react'
 import Input from '../Input'
 import SubmitButton from './SubmitButton'

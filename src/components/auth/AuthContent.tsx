@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 // import { useToggleVariant } from '@/hooks/useToggleVariant';
 import { useLocalStorage } from "usehooks-ts";
 import { SocialLoginButton } from "./SocialLoginButton";
+import { LocalStorageKeys } from "@/utils/constants";
 
 interface AuthContentProps {
   loginForm: ReactNode;
@@ -16,7 +17,7 @@ type Variant = "login" | "register";
 function AuthContent({ loginForm, registerForm }: AuthContentProps) {
   // const [variant, toggleVariant] = useToggleVariant();
   const [variant, setVariant, removeVariant] =
-    useLocalStorage<Variant>("variant", "login");
+    useLocalStorage<Variant>(LocalStorageKeys.AUTH_PAGE, "login");
   return (
     <div className='bg-black bg-opacity-70 px-16  py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full'>
       {variant === "login" ? loginForm : registerForm}
