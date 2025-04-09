@@ -7,15 +7,16 @@ import MuteButton from '@/components/videoplayer/MuteButton'
 import useVideoDuration from '@/hooks/useVideoDuration'
 
 const Billboard = () => {
-const {data} = useBillboard();
-const videRef = React.useRef<HTMLVideoElement>(null);
-useVideoDuration({
-  videoRef: videRef,
-  startTime: 0,
-  stopTime: 25,
-})
+  const videRef = React.useRef<HTMLVideoElement>(null);
+  const {data} = useBillboard();
+  useVideoDuration({
+    videoRef: videRef,
+    startTime: 0,
+    stopTime: 25,
+  })
   return (
     <div className='relative h-[56.25vw]'>
+
         <video
         ref={videRef}
         autoPlay
