@@ -5,6 +5,8 @@ import { authOptions } from '@/lib/authOptions';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
+// TODO: handle error messages [and everywhere else]
+
 async function  AuthPage() {
 
 

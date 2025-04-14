@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/Billboard";
 import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
+import useFavorites from "@/hooks/useFavorites";
 import useMovieList from "@/hooks/useMovieList";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
@@ -33,6 +34,7 @@ export default async function Home() {
   const handleReady = () => {
     console.log("Player is ready");
   };
+  // const {data: movies = []} = useMovieList()
   return (
 
     <div>
@@ -41,8 +43,8 @@ export default async function Home() {
           <Navbar />
           <Billboard />
           <div className="pb-40">
-            <MovieList title="
-            Trending" />
+            <MovieList title="Trending" hook={useMovieList} />
+            <MovieList title="My List" hook={useFavorites} />
           </div>
           {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
         </>

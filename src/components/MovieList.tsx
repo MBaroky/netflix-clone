@@ -1,17 +1,18 @@
 "use client"
-import React from 'react'
+import React, { useCallback } from 'react'
 import { isEmpty } from 'lodash'
 import useMovieList from '@/hooks/useMovieList'
 import MovieCard from './MovieCard'
 
 interface MovieListProps {
   data?: Record<string, any>[],
-  title: string
+  title: string,
+  hook: () => { data: any; error: any; isLoading: boolean; }
 }
 
-const MovieList:React.FC<MovieListProps>= ({ title}) => {
+const MovieList:React.FC<MovieListProps>= ({ title, hook }) => {
 
-  const {data} = useMovieList()
+  const {data} = hook();
   if(isEmpty(data)) return null
 
   return (
