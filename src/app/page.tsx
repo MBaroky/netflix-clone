@@ -1,8 +1,9 @@
-import LogoutButton from "@/components/auth/LogoutButton";
+import MovieList from "@/components/MovieList";
 import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/Billboard";
 import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
+import useMovieList from "@/hooks/useMovieList";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -39,6 +40,10 @@ export default async function Home() {
         <>
           <Navbar />
           <Billboard />
+          <div className="pb-40">
+            <MovieList title="
+            Trending" />
+          </div>
           {/* <VideoPlayer options={videoJsOptions} onReady={handleReady} /> */}
         </>
       )}
