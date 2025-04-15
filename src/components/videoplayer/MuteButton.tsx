@@ -9,9 +9,11 @@ interface MuteButtonProps {
 }
 
 const MuteButton: React.FC<MuteButtonProps> = ({ videoRef }) => {
-  const initialMuted = useReadLocalStorage(LocalStorageKeys.MUTED) as boolean | null;
-  const [isMuted, setIsMuted] = useState<boolean>(initialMuted || true);
-  const [muted, setMuted] = useLocalStorage(LocalStorageKeys.MUTED, isMuted);
+
+
+  const [muted, setMuted] = useLocalStorage(LocalStorageKeys.MUTED, true);
+
+  const [isMuted, setIsMuted] = useState<boolean>(muted !== null ? muted : false);
 
   if (videoRef.current) {
 
