@@ -3,24 +3,24 @@ import prismadb from "@/lib/prismadb";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET(req: NextRequest, { params }: { params: { movieid: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { movieId: string } } ) {
     try {
         const {currentUser} = await serverAuth(req);
         if (!currentUser) {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
-        const { movieid } = await params;
+        const  {movieId}  = params;
 
-        if(typeof movieid !== "string"){
+        if(typeof movieId !== "string"){
             return NextResponse.json({ error: "Invalid movie id" }, { status: 400 });
         }
 
-        if(!movieid){
+        if(!movieId){
             return NextResponse.json({ error: "Movie id is required" }, { status: 400 });
         }
         const movie = await prismadb.movie.findUnique({
             where: {
-                id: movieid
+                id: movieId
             },
         });
         if(!movie){

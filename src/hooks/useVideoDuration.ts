@@ -17,6 +17,7 @@ const useVideoDuration = ({videoRef, startTime, stopTime}:VideoDurationProps) =>
     // Set the video to start from the specified time on load
     video.addEventListener("loadedmetadata", () => {
       video.currentTime = startTime;
+      video.play();
       console.log("Video loaded and set to start time:", startTime);
     });
 
@@ -26,6 +27,7 @@ const useVideoDuration = ({videoRef, startTime, stopTime}:VideoDurationProps) =>
         video.currentTime = startTime; // Reset to start time
         video.play(); // Automatically replay
       }
+      // console.log("Current time:", video.currentTime);
     };
 
     video.addEventListener("timeupdate", handleTimeUpdate);

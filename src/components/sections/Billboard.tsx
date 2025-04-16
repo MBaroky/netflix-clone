@@ -14,7 +14,7 @@ const Billboard = () => {
   const {data} = useBillboard();
   useVideoDuration({
     videoRef: videRef,
-    startTime: 0,
+    startTime: 2,
     stopTime: 25,
   })
   return (
@@ -23,7 +23,6 @@ const Billboard = () => {
         <video
         ref={videRef}
         autoPlay
-        muted = {useReadLocalStorage(LocalStorageKeys.MUTED) as boolean}
         loop
         className='w-full h-[56.25vw] object-cover brightness-[60%] transition duration-500'
         poster={data?.thumbnailUrl}
