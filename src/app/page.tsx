@@ -1,3 +1,4 @@
+import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/Billboard";
@@ -40,6 +41,7 @@ export default async function Home() {
     <div>
       {session && (
         <>
+        <InfoModal />
           <Navbar />
           <Billboard />
           <div className="pb-40">
