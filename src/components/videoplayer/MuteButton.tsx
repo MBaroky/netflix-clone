@@ -1,5 +1,5 @@
 import { LocalStorageKeys } from "@/utils/constants";
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 
 import { GoMute, GoUnmute } from "react-icons/go";
 import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
@@ -14,11 +14,13 @@ const MuteButton: React.FC<MuteButtonProps> = ({ videoRef }) => {
   const [muted, setMuted] = useLocalStorage(LocalStorageKeys.MUTED, true);
 
   const [isMuted, setIsMuted] = useState<boolean>(muted !== null ? muted : false);
+  useEffect(() => {
 
-  if (videoRef.current) {
+    if (videoRef.current) {
 
-    videoRef.current.muted = Boolean(isMuted);
-  }
+      videoRef.current.muted = isMuted
+    }
+  },[videoRef, isMuted])
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;

@@ -14,7 +14,7 @@ const Billboard = () => {
   const {data} = useBillboard();
   useVideoDuration({
     videoRef: videRef,
-    startTime: 2,
+    startTime: 0,
     stopTime: 25,
   })
   return (
