@@ -3,7 +3,8 @@ import prismadb from "@/lib/prismadb";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET(req: NextRequest, { params }: { params: { movieId: string } } ) {
+export async function GET(req: NextRequest, props: { params: Promise<{ movieId: string }> }) {
+    const params = await props.params;
     try {
         const {currentUser} = await serverAuth(req);
         if (!currentUser) {
