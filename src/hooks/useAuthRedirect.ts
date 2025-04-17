@@ -9,7 +9,7 @@ export const useAuthRedirect =  () => {
     const fetchSession = async () => {
       const session = await getSession();
       if (!session) {
-        redirect("/auth");
+        redirect("/login");
       }
     };
     fetchSession();

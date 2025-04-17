@@ -1,10 +1,10 @@
 "use client";
+import AuthBottomArea from '@/components/auth/AuthBottomArea';
+import SubmitButton from '@/components/auth/SubmitButton';
+import Input from '@/components/Input';
 import { registerFormAction } from '@/utils/authActions'
-import React from 'react'
-import Input from '../Input'
-import SubmitButton from './SubmitButton'
 
-function RegisterForm() {
+function RegisterPage() {
     return (
         <>
             <h2 className='text-white text-4xl mb-8 font-semibold'>
@@ -32,8 +32,10 @@ function RegisterForm() {
                 <SubmitButton text='Register' />
 
             </form>
+
+            <AuthBottomArea linkText='Sign in' text='Already have an account? ' url='/login' />
         </>
     )
 }
 
-export default RegisterForm
+export default RegisterPage

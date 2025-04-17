@@ -56,7 +56,7 @@ export const authOptions:NextAuthOptions = {
           })
       ],
       pages:{
-          signIn:'/auth',
+          signIn:'/login',
       },
       debug: process.env.NODE_ENV !== "production",
       adapter: PrismaAdapter(prismadb),

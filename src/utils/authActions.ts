@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { signIn } from "next-auth/react";
 
@@ -32,9 +33,7 @@ export const registerFormAction = async (formData: FormData, callBackFun?:Callab
      name,
      password,
    });
-   loginFormAction(formData
-    // , callBackFun
-  );
+   loginFormAction(formData);
  } catch (error) {
    console.log(error);
  }

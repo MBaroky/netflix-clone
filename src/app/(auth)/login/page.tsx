@@ -1,9 +1,10 @@
 "use client";
-import Input from '../Input';
-import SubmitButton from './SubmitButton';
+import AuthBottomArea from '@/components/auth/AuthBottomArea';
+import SubmitButton from '@/components/auth/SubmitButton';
+import Input from '@/components/Input';
 import { loginFormAction } from '@/utils/authActions';
 
-function LoginForm() {
+function LoginPage() {
 
     return (
         <>
@@ -25,8 +26,9 @@ function LoginForm() {
                 </div>
                 <SubmitButton text='Login' />
             </form>
+            <AuthBottomArea linkText='Create an account' text='First time here? ' url='/register' />
         </>
     )
 }
 
-export default LoginForm
+export default LoginPage
