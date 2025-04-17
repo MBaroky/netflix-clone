@@ -16,9 +16,9 @@ const authLayout = async ({
   return (
 
     <div className='
-    relative min-h-full w-full bg-[url(/images/hero.jpg)] bg-fixed bg-cover bg-center flex items-center justify-center
+    relative min-h-full w-full bg-[url(/images/hero.jpg)] bg-fixed bg-cover bg-center flex flex-col items-stretch justify-center
     '>
-        <div className=" bg-black w-full h-full  pb-8 lg:bg-opacity-50">
+        <div className="bg-black w-full h-full flex-grow pb-8 lg:bg-opacity-50">
             <nav className='px-12 py-5'>
                 <img className='h-12' src="/images/logo.png" alt="logo" />
             </nav>
