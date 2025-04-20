@@ -6,14 +6,12 @@ import {AiOutlineInfoCircle} from 'react-icons/ai'
 import MuteButton from '@/components/videoplayer/MuteButton'
 import useVideoDuration from '@/hooks/useVideoDuration'
 import PlayButton from '../PlayButton'
-import { useReadLocalStorage } from 'usehooks-ts'
-import { LocalStorageKeys } from '@/utils/constants'
 import useInfoModal from '@/hooks/useInfoModal'
 
 const Billboard = () => {
   const {openModal} = useInfoModal();
   const videRef = React.useRef<HTMLVideoElement>(null);
-  const {data} = useBillboard();
+  const {data}: {data: Movie} = useBillboard();
   useVideoDuration({
     videoRef: videRef,
     startTime: 0,

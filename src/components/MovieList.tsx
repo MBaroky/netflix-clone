@@ -1,13 +1,12 @@
 "use client"
-import React, { useCallback } from 'react'
+import React from 'react'
 import { isEmpty } from 'lodash'
-import useMovieList from '@/hooks/useMovieList'
 import MovieCard from './MovieCard'
 
 interface MovieListProps {
-  data?: Record<string, any>[],
+  data?: Movie[],
   title: string,
-  hook: () => { data: any; error: any; isLoading: boolean; }
+  hook: () => { data: Movie[]; error: any; isLoading: boolean; }
 }
 
 const MovieList:React.FC<MovieListProps>= ({ title, hook }) => {
@@ -21,7 +20,7 @@ const MovieList:React.FC<MovieListProps>= ({ title, hook }) => {
         {title}
       </p>
       <div className='grid grid-cols-4 gap-2'>
-        {data.map((movie: { id: string; thumbnailUrl: string; title: string }) => (
+        {data.map((movie: Movie) => (
           <MovieCard data={movie} key={movie.id} />
         ))}
       </div>

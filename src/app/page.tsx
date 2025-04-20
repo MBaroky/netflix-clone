@@ -10,6 +10,8 @@ import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { env } from "process";
+import { Suspense } from "react";
+import { BiLoader } from "react-icons/bi";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -36,7 +38,6 @@ export default async function Home() {
   const handleReady = () => {
     console.log("Player is ready");
   };
-  // const {data: movies = []} = useMovieList()
   return (
 
     <div>
@@ -44,7 +45,10 @@ export default async function Home() {
         <>
         <InfoModal />
           <Navbar />
-          <Billboard />
+          {/* <Suspense fallback={<BiLoader />}> */}
+
+            <Billboard />
+          {/* </Suspense> */}
           <div className="pb-40">
             <MovieList title="Trending" hook={useMovieList} />
             <MovieList title="My List" hook={useFavorites} />

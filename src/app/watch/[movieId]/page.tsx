@@ -6,7 +6,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const Watch = () => {
     const { movieId } = useParams();
-    const {data} = useMovie(movieId as string);
+    const {data}:{data:Movie} = useMovie(movieId as string);
 
     return (
         <div className='h-screen w-screen bg-black'>

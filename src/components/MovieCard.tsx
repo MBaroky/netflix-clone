@@ -6,7 +6,7 @@ import Link from "next/link";
 import useInfoModal from "@/hooks/useInfoModal";
 
 interface MovieCardProps {
-  data: Record<string, any>;
+  data: Movie;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
