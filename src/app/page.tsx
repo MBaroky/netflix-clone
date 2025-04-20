@@ -9,12 +9,13 @@ import useMovieList from "@/hooks/useMovieList";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { env } from "process";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/login");
+    redirect(env.NEXTAUTH_LOGIN_URL || "/login");
   }
 
   const videoJsOptions = {

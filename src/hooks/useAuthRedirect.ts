@@ -1,17 +1,12 @@
-"use client";
-import { getSession } from "next-auth/react"
+import { authOptions } from "@/lib/authOptions";
+import { getServerSession } from "next-auth/next"
 import { redirect } from "next/navigation";
-import { useEffect } from "react";
+import { env } from "process";
 
-export const useAuthRedirect =  () => {
+export const useAuthRedirect = async () => {
 
-  useEffect(() => {
-    const fetchSession = async () => {
-      const session = await getSession();
+      const session = await getServerSession(authOptions);
       if (!session) {
-        redirect("/login");
+        redirect(env.NEXTAUTH_LOGIN_URL || "/login");
       }
-    };
-    fetchSession();
-  }, []);
 }

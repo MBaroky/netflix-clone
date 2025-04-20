@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { signIn } from "next-auth/react";
 
@@ -11,7 +10,7 @@ async (formData: FormData, callBackFun?:CallableFunction) => {
    const result = await signIn('credentials', {
      email,
      password,
-     callbackUrl: '/profiles',
+     callbackUrl: process.env.NEXTAUTH_CALLBACK_URL || '/profiles',
    });
    if (result?.error) {
      console.log(result.error);

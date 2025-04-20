@@ -4,12 +4,13 @@ import { ProfileButton } from '@/components/ProfileButton'
 import { authOptions } from '@/lib/authOptions'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+import { env } from 'process'
 import React from 'react'
 
 async function Profiles() {
   const session = await getServerSession(authOptions)
   if (!session) {
-    redirect('/login')
+    redirect(env.NEXTAUTH_LOGIN_URL || '/login')
   }
   return (
     <div className='flex items-center h-full justify-center'>

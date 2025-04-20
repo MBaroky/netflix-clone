@@ -11,7 +11,7 @@ const authLayout = async ({
 
     const session = await getServerSession(authOptions);
     if (session) {
-      redirect("/profiles");
+      redirect(process.env.NEXTAUTHCALLBACK_URL || '/login');
     }
   return (
 

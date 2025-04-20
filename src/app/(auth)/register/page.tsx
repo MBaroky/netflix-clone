@@ -33,7 +33,7 @@ function RegisterPage() {
 
             </form>
 
-            <AuthBottomArea linkText='Sign in' text='Already have an account? ' url='/login' />
+            <AuthBottomArea linkText='Sign in' text='Already have an account? ' url={process.env.NEXTAUTH_LOGIN_URL || '/login'} />
         </>
     )
 }

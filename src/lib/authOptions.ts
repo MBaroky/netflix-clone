@@ -7,6 +7,7 @@ import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
+import { env } from "process";
 
 export const authOptions:NextAuthOptions = {
     providers: [
@@ -56,7 +57,7 @@ export const authOptions:NextAuthOptions = {
           })
       ],
       pages:{
-          signIn:'/login',
+          signIn:env.NEXTAUTH_LOGIN_URL || '/login',
       },
       debug: process.env.NODE_ENV !== "production",
       adapter: PrismaAdapter(prismadb),

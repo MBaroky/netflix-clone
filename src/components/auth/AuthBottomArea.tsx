@@ -18,13 +18,13 @@ const AuthBottomArea:React.FC<AuthBottomAreaProps> = ({url, text, linkText}) => 
         <div className='flex flex-row items-center gap-4 mt-8 justify-center'>
                       <SocialLoginButton
                         onClick={() =>
-                          signIn("google", { callbackUrl: "/profiles" })
+                          signIn("google", { callbackUrl: process.env.NEXTAUTH_CALLBACK_URL || '/profiles' })
                         }>
                         <FcGoogle size={30} />
                       </SocialLoginButton>
                       <SocialLoginButton
                         onClick={() =>
-                          signIn("github", { callbackUrl: "/profiles" })
+                          signIn("github", { callbackUrl: process.env.NEXTAUTH_CALLBACK_URL || '/profiles' })
                         }>
                         <FaGithub size={30} />
                       </SocialLoginButton>
