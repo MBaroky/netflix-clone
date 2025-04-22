@@ -1,7 +1,7 @@
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/navbar/Navbar";
-import Billboard from "@/components/sections/Billboard";
+import Billboard from "@/components/sections/BillBoard";
 import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
 import useFavorites from "@/hooks/useFavorites";
@@ -10,8 +10,6 @@ import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { env } from "process";
-import { Suspense } from "react";
-import { BiLoader } from "react-icons/bi";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -45,11 +43,9 @@ export default async function Home() {
         <>
         <InfoModal />
           <Navbar />
-          {/* <Suspense fallback={<BiLoader />}> */}
-
             <Billboard />
-          {/* </Suspense> */}
           <div className="pb-40">
+
             <MovieList title="Trending" hook={useMovieList} />
             <MovieList title="My List" hook={useFavorites} />
           </div>

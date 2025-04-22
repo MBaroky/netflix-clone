@@ -13,6 +13,7 @@ async function handler(req: NextRequest) {
 
         const movies = await prismadb.movie.findMany();
 
+
         return NextResponse.json(movies, { status: 200 });
 
     } catch (err) {

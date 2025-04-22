@@ -1,8 +1,9 @@
+import delayResponse  from '@/lib/delayResponse';
 import { NextRequest, NextResponse } from "next/server";
 
 import serverAuth from "@/lib/serverAuth";
 import prismadb from "@/lib/prismadb";
-import { without } from "lodash";
+import { delay, without } from "lodash";
 
 export async function POST(req:NextRequest){
     try{
@@ -79,6 +80,7 @@ export async function GET(req:NextRequest){
                 }
             }
         })
+        // await delayResponse(10000)
         return NextResponse.json(favouriteMovies, {status: 200})
     }catch(err){
         console.log(err)

@@ -9,9 +9,11 @@ const useMovie = (id?:string) => {
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
         revalidateIfStale: false,
+        // fallbackData: {
+        //     title: "Loading ..."
+        // }, // Provide fallback data for SSR
+        // suspense: true,
     });
-
-
 
 
     return {data, error, isLoading};

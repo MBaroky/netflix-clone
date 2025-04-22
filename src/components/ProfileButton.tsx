@@ -5,7 +5,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { redirect } from "next/navigation";
 
 export const ProfileButton = () => {
-    const {data:user} = useCurrentUser();
+    const {data:user}:{data:User} = useCurrentUser();
   return (
     <div onClick={() => {redirect('/')}}>
       <div className='group flex-row w-44 mx-auto'>

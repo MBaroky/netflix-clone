@@ -2,6 +2,7 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
 import MovieCard from './MovieCard'
+import MovieCardSkeleton from './MovieCard/skeleton'
 
 interface MovieListProps {
   data?: Movie[],
@@ -9,10 +10,9 @@ interface MovieListProps {
   hook: () => { data: Movie[]; error: any; isLoading: boolean; }
 }
 
-const MovieList:React.FC<MovieListProps>= ({ title, hook }) => {
+const MovieList:React.FC<MovieListProps> = ({ title, hook }) => {
 
-  const {data} = hook();
-  if(isEmpty(data)) return null
+  const {data, isLoading} = hook();
 
   return (
     <div className='px-4 md:px-12 mt-4 space-y-8'>
@@ -20,7 +20,11 @@ const MovieList:React.FC<MovieListProps>= ({ title, hook }) => {
         {title}
       </p>
       <div className='grid grid-cols-4 gap-2'>
-        {data.map((movie: Movie) => (
+        {
+          isLoading ? [...Array(4)].map((u, index) => (
+              <MovieCardSkeleton key={index} />
+            )):
+        data.map((movie: Movie) => (
           <MovieCard data={movie} key={movie.id} />
         ))}
       </div>

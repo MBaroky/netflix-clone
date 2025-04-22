@@ -4,8 +4,9 @@ import useInfoModal from '@/hooks/useInfoModal';
 import useMovie from '@/hooks/useMovie';
 import React, { useCallback, useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
-import PlayButton from './PlayButton';
-import FavoriteButton from './FavoriteButton';
+import PlayButton from '../PlayButton';
+import FavoriteButton from '../FavoriteButton';
+import InfoModalSkeleton from './skeleton';
 
 // interface InfoModalProps {
 //     visible: boolean;
@@ -17,7 +18,7 @@ const InfoModal = ({
 }) => {
     const {movieId, isOpen:visible, closeModal:beforeClose} = useInfoModal()
     const [isVisible, setIsVisible] = useState(!!visible);
-    const {data={}} = useMovie(movieId);
+    const {data, isLoading}:{data:Movie, isLoading:boolean} = useMovie(movieId);
     useEffect(() => {
         setIsVisible(!!visible);
     },[visible])
@@ -34,6 +35,11 @@ const InfoModal = ({
         if(e.target === e?.currentTarget){
             handleClose();
         }
+    }
+    if(isLoading){
+        return (
+            <InfoModalSkeleton />
+        )
     }
   return (
     <div onClick={closeBlackArea} className='

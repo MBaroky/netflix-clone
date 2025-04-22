@@ -4,6 +4,7 @@ interface User {
   name: string;
   email: string;
   profileId: string;
+  hashedPassword: string;
 }
 
 // Define a UserProfile entity
