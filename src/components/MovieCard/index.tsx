@@ -1,9 +1,10 @@
 import React from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
-import FavoriteButton from "../FavoriteButton";
+import FavoriteButton from "@/components/FavoriteButton";
 import Link from "next/link";
 import useInfoModal from "@/hooks/useInfoModal";
+import { movieCardSharedClasses } from "./sharedClasses";
 
 interface MovieCardProps {
   data: Movie;
@@ -13,47 +14,41 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const { openModal } = useInfoModal();
 
   return (
-    <div className='group bg-zinc-900 col-span relative h-[12vw] '>
+    <div className={movieCardSharedClasses.container}>
       <img
         src={data.thumbnailUrl}
         alt={data.title}
-        className='w-full rounded-md object-cover transition shadow-xl cursor-pointer group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 h-[12vw]'
+        className={movieCardSharedClasses.image}
       />
-      <div className='opcaity-0 absolute top-0 transition duration-200 z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:-translate-x-[1.1%] group-hover:opacity-100 bg-zinc-900 rounded-md '>
+      <div className={movieCardSharedClasses.overlay}>
         <img
           src={data.thumbnailUrl}
           alt={data.title}
-          className='w-full rounded-t-md object-cover transition duration shadow-xl cursor-pointer h-[12vw]'
+          className={movieCardSharedClasses.overlayImage}
         />
-        <div className='z-10 bg-zinc-800 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md'>
-          <div className='flex flex-row items-center gap-2'>
-            <Link
-              href={`/watch/${data.id}`}
-              className='w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex items-center justify-center cursor-pointer transition hover:bg-neutral-300'>
+        <div className={movieCardSharedClasses.content}>
+          <div className="flex flex-row items-center gap-2">
+            <Link href={`/watch/${data.id}`} className={movieCardSharedClasses.button}>
               <BsFillPlayFill size={30} />
             </Link>
             <FavoriteButton movieId={data?.id} />
             <button
               onClick={() => openModal(data?.id)}
-              className='ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300'>
+              className={`${movieCardSharedClasses.button} ml-auto`}>
               <BiChevronDown
-                className='text-white group-hover/item:text-neutral-300 w-4 h-4'
+                className="text-white group-hover/item:text-neutral-300 w-4 h-4"
                 size={30}
               />
             </button>
           </div>
-          <p className='text-green-400 font-semibold mt-4'>
-            New <span className='text-white'>2025</span>
+          <p className="text-green-400 font-semibold mt-4">
+             <span className="text-white">{data?.title}</span>
           </p>
-          <div className='flex flex-row mt-4 gap-2 items-center'>
-            <p className='text-white text-[10px] lg:text-sm'>
-              {data.duration}
-            </p>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className={movieCardSharedClasses.text}>{data.duration}</p>
           </div>
-          <div className='flex flex-row mt-4 gap-2 items-center'>
-            <p className='text-white text-[10px] lg:text-sm'>
-              {data.genre}
-            </p>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className={movieCardSharedClasses.text}>{data.genre}</p>
           </div>
         </div>
       </div>
