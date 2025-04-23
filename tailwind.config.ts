@@ -1,3 +1,4 @@
+import plugin from "tailwindcss/plugin";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -11,6 +12,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        skeleton: "var(--skeleton-bg)", // Using Tailwind's built-in gray-700 variable
+        // TODO: replace this in the rest of skeletons and work on enhancing it
+      },
+      animation: {
+        skeleton: "pulse 1.5s ease-in-out infinite",
       },
     },
   },
@@ -20,6 +26,4 @@ export default {
       pattern: /pt-\d+/,
     },
   ],
-
-
 } satisfies Config;

@@ -1,6 +1,7 @@
 /* styles.css */
 /* @import '~video.js/dist/video-js.css';
 @import '~videojs-ima/dist/videojs.ima.css'; */
+/* @import "tailwindcss"; */
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --skeleton-bg: #545454;
 }
 
 @media (prefers-color-scheme: dark) {

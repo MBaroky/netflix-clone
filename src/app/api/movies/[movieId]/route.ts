@@ -1,3 +1,4 @@
+import { delayResponse } from '@/lib/delayResponse';
 import serverAuth from "@/lib/serverAuth";
 import prismadb from "@/lib/prismadb";
 import { NextRequest, NextResponse } from "next/server";
@@ -30,6 +31,8 @@ export async function GET(req: NextRequest, props: { params: Promise<{ movieId: 
         if (!movie) {
             return NextResponse.json({ error: "Movie not found" }, { status: 404 });
         }
+
+        await delayResponse(10000);
 
         return NextResponse.json(movie, { status: 200 });
     } catch (error) {

@@ -46,50 +46,53 @@ const InfoModal = () => {
     return null;
   }
 
-  if(isLoading){
-    return (
-        <InfoModalSkeleton />
-    )
-}
+
 
   return (
     <div onClick={closeBlackArea} className={infoModalSharedClasses.container}>
       <div className={infoModalSharedClasses.modalWrapper}>
-        <div
-          className={`${infoModalSharedClasses.modalContent} ${
-            isVisible ? 'scale-100' : 'scale-0'
-          }`}
-        >
-          <div className={infoModalSharedClasses.videoWrapper}>
-            <video
-              autoPlay
-              muted
-              loop
-              className={infoModalSharedClasses.video}
-              src={data?.videoUrl}
-              poster={data?.thumbnailUrl}
-            ></video>
-            <button
-              onClick={handleClose}
-              className={infoModalSharedClasses.closeButton}
+
+        {isLoading ?
+          (
+            <InfoModalSkeleton />
+          ):(
+            <div
+              className={`${infoModalSharedClasses.modalContent} ${
+                isVisible ? 'scale-100' : 'scale-0'
+              }`}
             >
-              <AiOutlineClose className="text-white" size={30} />
-            </button>
-            <div className={infoModalSharedClasses.titleWrapper}>
-              <p className={infoModalSharedClasses.title}>{data?.title}</p>
-              <div className={infoModalSharedClasses.buttonWrapper}>
-                <PlayButton movieId={data?.id} />
-                <FavoriteButton movieId={data?.id} />
+              <div className={infoModalSharedClasses.videoWrapper}>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  className={infoModalSharedClasses.video}
+                  src={data?.videoUrl}
+                  poster={data?.thumbnailUrl}
+                ></video>
+                <button
+                  onClick={handleClose}
+                  className={infoModalSharedClasses.closeButton}
+                >
+                  <AiOutlineClose className="text-white" size={30} />
+                </button>
+                <div className={infoModalSharedClasses.titleWrapper}>
+                  <p className={infoModalSharedClasses.title}>{data?.title}</p>
+                  <div className={infoModalSharedClasses.buttonWrapper}>
+                    <PlayButton movieId={data?.id} />
+                    <FavoriteButton movieId={data?.id} />
+                  </div>
+                </div>
+              </div>
+              <div className={infoModalSharedClasses.contentWrapper}>
+                <p className={infoModalSharedClasses.label}>New</p>
+                <p className={infoModalSharedClasses.text}>{data?.duration}</p>
+                <p className={infoModalSharedClasses.text}>{data?.genre}</p>
+                <p className={infoModalSharedClasses.text}>{data?.description}</p>
               </div>
             </div>
-          </div>
-          <div className={infoModalSharedClasses.contentWrapper}>
-            <p className={infoModalSharedClasses.label}>New</p>
-            <p className={infoModalSharedClasses.text}>{data?.duration}</p>
-            <p className={infoModalSharedClasses.text}>{data?.genre}</p>
-            <p className={infoModalSharedClasses.text}>{data?.description}</p>
-          </div>
-        </div>
+          )
+        }
       </div>
     </div>
   );
