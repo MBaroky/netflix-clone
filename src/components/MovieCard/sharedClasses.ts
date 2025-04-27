@@ -4,6 +4,6 @@ export const movieCardSharedClasses = {
   overlay: 'opacity-0 absolute top-0 transition duration-200 z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:-translate-x-[1.1%] group-hover:opacity-100 bg-zinc-900 rounded-md',
   overlayImage: 'w-full rounded-t-md object-cover transition duration shadow-xl cursor-pointer h-[12vw]',
   content: 'z-10 bg-zinc-800 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md',
-  button: 'w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex items-center justify-center cursor-pointer transition hover:bg-neutral-300',
+  button: 'w-6 h-6 lg:w-10 lg:h-10 rounded-full flex items-center justify-center cursor-pointer transition',
   text: 'text-white text-[10px] lg:text-sm',
 };

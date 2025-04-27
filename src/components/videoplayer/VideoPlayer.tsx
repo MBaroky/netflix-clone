@@ -1,6 +1,9 @@
 "use client";
+
+// hooks
 import { useEffect, useRef, useState } from "react";
 
+// video.js
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import SpeedControl from "@/components/videoplayer/SpeedControl";

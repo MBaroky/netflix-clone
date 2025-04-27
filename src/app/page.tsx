@@ -1,15 +1,23 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { env } from "process";
+
+// Components
 import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/BillBoard";
 import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
+
+// Hooks
 import useFavorites from "@/hooks/useFavorites";
 import useMovieList from "@/hooks/useMovieList";
+
+// lib
 import { authOptions } from "@/lib/authOptions";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { env } from "process";
+
+
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

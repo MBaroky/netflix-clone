@@ -1,14 +1,21 @@
 "use client";
-import useBillboard from '@/hooks/useBillboard';
 import React, { useCallback } from 'react';
 
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import MuteButton from '@/components/videoplayer/MuteButton';
+// Hooks
+import useBillboard from '@/hooks/useBillboard';
 import useVideoDuration from '@/hooks/useVideoDuration';
-import PlayButton from '@components/PlayButton';
 import useInfoModal from '@/hooks/useInfoModal';
-import { billboardSharedClasses } from './sharedClasses';
+
+// Icons
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+
+// Components
+import MuteButton from '@/components/videoplayer/MuteButton';
+import PlayButton from '@components/PlayButton';
 import BillboardSkeleton from './skeleton';
+
+// Styles
+import { billboardSharedClasses } from './sharedClasses';
 
 const Billboard = () => {
   const { openModal } = useInfoModal();

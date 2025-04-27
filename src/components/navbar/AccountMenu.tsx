@@ -1,7 +1,11 @@
 "use client"
 import React from 'react'
+
+// Components
 import DropDownMenu from './DropDownMenu'
-import LogoutButton from '../auth/LogoutButton'
+import LogoutButton from '@/components/auth/LogoutButton'
+
+// Hooks
 import useCurrentUser from '@/hooks/useCurrentUser'
 
 const AccountButton = () => {

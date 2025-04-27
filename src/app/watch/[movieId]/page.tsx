@@ -1,6 +1,7 @@
 import React from "react";
+
+// Components
 import WatchVideoPlayer from "@/components/videoplayer/WatchVideoPlayer";
-import { Params } from "next/dist/server/request/params";
 
 
 const Watch = async ({params}:{params:Promise<{ movieId: string }> }) => {

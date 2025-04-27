@@ -1,7 +1,10 @@
 // Navbar.tsx
 import React from "react";
-import { BsBell, BsChevronDown, BsSearch } from "react-icons/bs";
 
+// Icons
+import { BsBell, BsSearch } from "react-icons/bs";
+
+// Components
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";

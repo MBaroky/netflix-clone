@@ -1,8 +1,12 @@
 "use client";
-import { registerFormAction } from '@/utils/authActions'
 import React from 'react'
-import Input from '../Input'
-import SubmitButton from './SubmitButton'
+
+// Actions
+import { registerFormAction } from '@/utils/authActions'
+
+// Components
+import Input from '@/components/Input'
+import SubmitButton from '@/components/auth/SubmitButton'
 
 function RegisterForm() {
     return (

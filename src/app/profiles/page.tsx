@@ -1,11 +1,14 @@
-
-import LogoutButton from '@/components/auth/LogoutButton'
-import { ProfileButton } from '@/components/ProfileButton'
-import { authOptions } from '@/lib/authOptions'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { env } from 'process'
 import React from 'react'
+
+// Components
+import LogoutButton from '@/components/auth/LogoutButton'
+import { ProfileButton } from '@/components/ProfileButton'
+
+// libs
+import { authOptions } from '@/lib/authOptions'
 
 async function Profiles() {
   const session = await getServerSession(authOptions)

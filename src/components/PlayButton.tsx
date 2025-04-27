@@ -1,5 +1,7 @@
-import Link from 'next/link';
 import React from 'react'
+import Link from 'next/link';
+
+// Icons
 import { BsFillPlayFill } from 'react-icons/bs';
 
 interface PlayButtonProps {

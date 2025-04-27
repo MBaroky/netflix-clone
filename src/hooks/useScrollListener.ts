@@ -1,4 +1,9 @@
 import { useEffect } from "react";
+
+/**
+ * Custom hook to listen for scroll events and execute a callback with the current scroll position.
+ * @param callback - Function to be called with the current scroll position.
+ */
 export default function useScrollListener(callback: (scrollY: number) => void):void {
     useEffect(() => {
         const handleScroll = () => {

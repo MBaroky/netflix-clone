@@ -1,4 +1,6 @@
 import React from 'react'
+
+// Icons
 import { BiLoaderAlt } from 'react-icons/bi'
 
 const Loader = () => {

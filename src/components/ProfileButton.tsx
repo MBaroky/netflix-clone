@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-
-import useCurrentUser from "@/hooks/useCurrentUser";
 import { redirect } from "next/navigation";
+
+// Hooks
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 export const ProfileButton = () => {
     const {data:user}:{data:User} = useCurrentUser();

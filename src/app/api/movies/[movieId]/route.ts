@@ -32,7 +32,7 @@ export async function GET(req: NextRequest, props: { params: Promise<{ movieId: 
             return NextResponse.json({ error: "Movie not found" }, { status: 404 });
         }
 
-        await delayResponse(10000);
+        // await delayResponse(10000);
 
         return NextResponse.json(movie, { status: 200 });
     } catch (error) {

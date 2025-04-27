@@ -1,6 +1,9 @@
 "use client";
-import Input from '../Input';
-import SubmitButton from './SubmitButton';
+// Components
+import Input from '@/components/Input';
+import SubmitButton from '@/components/auth/SubmitButton';
+
+// Actions
 import { loginFormAction } from '@/utils/authActions';
 
 function LoginForm() {

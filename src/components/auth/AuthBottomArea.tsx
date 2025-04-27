@@ -1,10 +1,16 @@
+// Next.js
+import Link from "next/link";
 import React from "react";
+
+// Components
 import { SocialLoginButton } from "./SocialLoginButton";
+
+// Icons
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react";
 import { FaGithub } from "react-icons/fa";
-import Link from "next/link";
 
+// Interfaces
 interface AuthBottomAreaProps {
   url: string;
   text: string;

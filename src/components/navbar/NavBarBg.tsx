@@ -1,7 +1,9 @@
 "use client"
-import useScrollListener from '@/hooks/useScrollListener';
-import classNames from 'classnames';
 import React from 'react'
+import classNames from 'classnames';
+
+// Hooks
+import useScrollListener from '@/hooks/useScrollListener';
 import { useDebounceCallback } from 'usehooks-ts';
 
 const NavBarBg = () => {

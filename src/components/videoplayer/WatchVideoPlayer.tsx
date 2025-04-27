@@ -1,8 +1,14 @@
 "use client";
-import fetcher from "@/lib/fetcher";
+
+// Icons
 import { AiOutlineArrowLeft } from "react-icons/ai";
+
+// Components
 import Loader from "@/components/Loader";
+
+// Hooks
 import useMovie from "@/hooks/useMovie";
+import { useRouter } from "next/navigation";
 
 interface WatchVideoPlayerProps {
     movieId: string;
@@ -10,6 +16,7 @@ interface WatchVideoPlayerProps {
 
 const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
     const { data, isLoading } = useMovie(movieId)
+    const router = useRouter();
 
     if(isLoading) {
         return (
@@ -24,7 +31,7 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
             <AiOutlineArrowLeft
               className='text-white cursor-pointer'
               size={30}
-              onClick={() => window.history.back()}
+              onClick={() => router.back()}
             />
             <p className='text-white text-1xl md:text-3xl font-bold'>
               <span className='font-light'>Watching: </span>

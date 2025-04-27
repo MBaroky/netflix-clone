@@ -1,8 +1,13 @@
-import { LocalStorageKeys } from "@/utils/constants";
 import React, {  useEffect, useState } from "react";
 
+// Utils
+import { LocalStorageKeys } from "@/utils/constants";
+
+// Icons
 import { GoMute, GoUnmute } from "react-icons/go";
-import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
+
+// Hooks
+import { useLocalStorage } from "usehooks-ts";
 
 interface MuteButtonProps {
   videoRef: React.RefObject<HTMLVideoElement | null>;

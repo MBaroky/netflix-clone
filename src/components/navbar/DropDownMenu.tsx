@@ -1,9 +1,12 @@
 "use client"
 import React, { useRef } from "react";
 import { useState } from "react";
-
 import classNames from "classnames";
+
+// Icons
 import { BsChevronDown } from "react-icons/bs";
+
+// Hooks
 import { useOnClickOutside } from "usehooks-ts";
 
 interface DropDownMenuProps {

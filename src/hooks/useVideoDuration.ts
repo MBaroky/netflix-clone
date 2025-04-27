@@ -1,4 +1,11 @@
 import { useEffect } from "react";
+/**
+ * Custom hook to control the playback duration of a video element.
+ * @param {Object} params - The parameters for the hook.
+ * @param {React.RefObject<HTMLVideoElement | null>} params.videoRef - The ref to the video element.
+ * @param {number} params.startTime - The time in seconds to start the video from.
+ * @param {number} params.stopTime - The time in seconds to stop the video at.
+ */
 
 interface VideoDurationProps {
     videoRef: React.RefObject<HTMLVideoElement | null>;

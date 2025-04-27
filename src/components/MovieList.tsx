@@ -1,8 +1,9 @@
 "use client"
 import React from 'react'
-import { isEmpty } from 'lodash'
-import MovieCard from './MovieCard'
-import MovieCardSkeleton from './MovieCard/skeleton'
+
+// Components
+import MovieCard from '@/components/MovieCard'
+import MovieCardSkeleton from '@/components/MovieCard/skeleton'
 
 interface MovieListProps {
   data?: Movie[],

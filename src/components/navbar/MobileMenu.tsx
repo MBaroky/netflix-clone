@@ -1,7 +1,8 @@
 import React from "react";
+
+// Components
 import NavbarItem from "./NavbarItem";
 import DropDownMenu from "./DropDownMenu";
-import { BsChevronDown } from "react-icons/bs";
 
 type MobileMenuProps = {
   // Define any props you need for the MobileMenu component

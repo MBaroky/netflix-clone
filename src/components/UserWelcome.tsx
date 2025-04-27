@@ -1,6 +1,8 @@
 "use client"
-import useCurrentUser from '@/hooks/useCurrentUser'
 import React from 'react'
+
+// Hooks
+import useCurrentUser from '@/hooks/useCurrentUser'
 
 
 function UserWelcome() {

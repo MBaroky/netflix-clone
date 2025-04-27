@@ -1,7 +1,11 @@
-import useCurrentUser from '@/hooks/useCurrentUser'
-import useFavorites from '@/hooks/useFavorites'
 import axios from 'axios'
 import React, { useCallback, useMemo } from 'react'
+
+// Custom hooks
+import useCurrentUser from '@/hooks/useCurrentUser'
+import useFavorites from '@/hooks/useFavorites'
+
+// Icons
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 
 interface FavoriteButtonProps {

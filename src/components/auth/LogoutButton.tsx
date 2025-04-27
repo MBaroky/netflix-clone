@@ -1,8 +1,8 @@
 "use client"
 
+import React from 'react'
 import { signOut } from "next-auth/react";
 
-import React from 'react'
 
 function LogoutButton({children}: {children: React.ReactNode}) {
   return (
