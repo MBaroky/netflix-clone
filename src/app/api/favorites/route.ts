@@ -1,4 +1,4 @@
-import delayResponse  from '@/lib/delayResponse';
+import {delayResponse}  from '@/lib/delayResponse';
 import { NextRequest, NextResponse } from "next/server";
 
 import serverAuth from "@/lib/serverAuth";

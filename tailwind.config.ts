@@ -13,7 +13,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         skeleton: "var(--skeleton-bg)", // Using Tailwind's built-in gray-700 variable
-        // TODO: replace this in the rest of skeletons and work on enhancing it
+        // TODO: replace this in the rest of skeletons and work on enhancing it or move to shadcn skeleton
       },
       animation: {
         skeleton: "pulse 1.5s ease-in-out infinite",
