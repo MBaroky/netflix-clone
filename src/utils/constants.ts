@@ -1,8 +1,17 @@
 
-export const ErrorMessages = {
-    NETWORK_ERROR: "Unable to connect to the server. Please try again later.",
-    LOGIN_FAILED: "Invalid username or password. Please check and try again.",
-};
+export const errorMessages: { [key: string]: string } = {
+    CredentialsSignin: "Invalid username or password.",
+    OAuthSignin: "Error during OAuth sign-in.",
+    OAuthCallback: "An issue occurred during OAuth callback.",
+    EmailSignin: "Email sign-in failed.",
+    EmptyInput: "Please fill in all required fields.",
+
+    // Registeration
+    DuplicateUser:"User already exists.",
+
+    // Default error message
+    default: "An unknown error occurred. Please try again.",
+  };
 
 export const GeneralStrings = {
     APP_NAME: "Netflix Clone V2",

@@ -1,5 +1,4 @@
 
-import CredentialsProvider from "next-auth/providers/credentials";
 import prismadb from '@/lib/prismadb'
 import {compare}  from 'bcrypt'
 import Credentials from "next-auth/providers/credentials";
@@ -58,6 +57,7 @@ export const authOptions:NextAuthOptions = {
       ],
       pages:{
           signIn:env.NEXTAUTH_LOGIN_URL || '/login',
+          error:env.NEXTAUTH_ERROR_URL || '/login',
       },
       debug: process.env.NODE_ENV !== "production",
       adapter: PrismaAdapter(prismadb),
