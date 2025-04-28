@@ -4,6 +4,7 @@ import React from 'react'
 // Components
 import MovieCard from '@/components/MovieCard'
 import MovieCardSkeleton from '@/components/MovieCard/skeleton'
+import { isEmpty } from 'lodash'
 
 interface MovieListProps {
   data?: Movie[],
@@ -14,6 +15,9 @@ interface MovieListProps {
 const MovieList:React.FC<MovieListProps> = ({ title, hook }) => {
 
   const {data, isLoading} = hook();
+  if(isEmpty(data) && !isLoading) {
+    return false;
+  }
 
   return (
     <div className='px-4 md:px-12 mt-4 space-y-8'>
