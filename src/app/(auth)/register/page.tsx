@@ -9,7 +9,6 @@ import Input from "@/components/Input";
 import { registerFormAction } from "@/utils/authActions";
 
 // hooks
-import { useState } from "react";
 import { useToastStore } from "@/components/Toast/toastStore";
 import Toast from "@/components/Toast";
 
