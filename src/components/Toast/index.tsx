@@ -23,7 +23,7 @@ export default function Toast() {
 
   return (
     <div
-      className={`fixed top-8 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-lg shadow-lg text-white transition-all duration-500 ${
+      className={`fixed max-w-full top-8 left-1/2 text-center w-80 -ml-40 px-6 py-3 rounded-lg shadow-lg text-white transition-all duration-500 ${isVisible ? 'animate-in slide-in-from-top': 'animate-out fade-out'} ${
         type === "success" ? "bg-green-500" : "bg-red-500"
       }`}
     >

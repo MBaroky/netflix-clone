@@ -25,6 +25,10 @@ body {
   @apply bg-zinc-900 h-full overflow-x-hidden;
 
 }
+  .custom-scrollbar {
+    @apply scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900;
+  }
+
 
 #__next {
   @apply h-full;

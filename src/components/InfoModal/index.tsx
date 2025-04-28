@@ -62,7 +62,7 @@ const InfoModal = () => {
 
 
   return (
-    <div onClick={closeBlackArea} className={Style.container}>
+    <div onClick={closeBlackArea} className={`${Style.container} custom-scrollbar`}>
       <div className={Style.modalWrapper}>
 
         {isLoading ?

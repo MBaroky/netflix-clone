@@ -20,7 +20,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar"),
+    require('tailwindcss-animate')
+  ],
   safelist: [
     {
       pattern: /pt-\d+/,
