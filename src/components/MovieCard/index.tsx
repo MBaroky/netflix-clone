@@ -10,7 +10,7 @@ import FavoriteButton from "@/components/FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
 
 // Styles
-import { movieCardSharedClasses } from "./sharedClasses";
+import Style from "./MovieCard.module.css";
 
 // Types
 interface MovieCardProps {
@@ -21,27 +21,28 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const { openModal } = useInfoModal();
 
   return (
-    <div className={movieCardSharedClasses.container}>
+    <div className={`${Style.container} group
+col-span`}>
       <img
         src={data.thumbnailUrl}
         alt={data.title}
-        className={movieCardSharedClasses.image}
+        className={`${Style.image} group-hover:opacity-90 sm:group-hover:opacity-0`}
       />
-      <div className={movieCardSharedClasses.overlay}>
+      <div className={`${Style.overlay} group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:-translate-x-[1.1%] group-hover:opacity-100  duration-200`}>
         <img
           src={data.thumbnailUrl}
           alt={data.title}
-          className={movieCardSharedClasses.overlayImage}
+          className={`${Style.overlayImage}  duration`}
         />
-        <div className={movieCardSharedClasses.content}>
+        <div className={Style.content}>
           <div className="flex flex-row items-center gap-2">
-            <Link href={`/watch/${data.id}`} className={`${movieCardSharedClasses.button}   bg-white hover:bg-neutral-300`}>
+            <Link href={`/watch/${data.id}`} className={`${Style.button}   bg-white hover:bg-neutral-300`}>
               <BsFillPlayFill size={30} />
             </Link>
             <FavoriteButton movieId={data?.id} />
             <button
               onClick={() => openModal(data?.id)}
-              className={`${movieCardSharedClasses.button} ml-auto border-white border-2 hover:border-neutral-300`}>
+              className={`${Style.button} ml-auto border-white border-2 hover:border-neutral-300`}>
               <BiChevronDown
                 className="text-white group-hover/item:text-neutral-300 w-4 h-4"
                 size={30}
@@ -52,10 +53,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
              <span className="text-white">{data?.title}</span>
           </p>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className={movieCardSharedClasses.text}>{data.duration}</p>
+            <p className={Style.text}>{data.duration}</p>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className={movieCardSharedClasses.text}>{data.genre}</p>
+            <p className={Style.text}>{data.genre}</p>
           </div>
         </div>
       </div>

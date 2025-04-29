@@ -15,7 +15,7 @@ import PlayButton from '@components/PlayButton';
 import BillboardSkeleton from './skeleton';
 
 // Styles
-import { billboardSharedClasses } from './sharedClasses';
+import Style from './Billboard.module.css'
 
 const Billboard = () => {
   const { openModal } = useInfoModal();
@@ -35,28 +35,28 @@ const Billboard = () => {
     )
   }
   return (
-    <div className={billboardSharedClasses.container}>
+    <div className={Style.container}>
       <video
         ref={videRef}
         autoPlay
         loop
-        className={billboardSharedClasses.video}
+        className={Style.video}
         poster={data?.thumbnailUrl}
         src={data?.videoUrl}
       />
       <div className="">
-        <div className={billboardSharedClasses.contentWrapper}>
-          <p className={billboardSharedClasses.title}>{data?.title}</p>
-          <p className={billboardSharedClasses.description}>{data?.description}</p>
-          <div className={billboardSharedClasses.buttonWrapper}>
+        <div className={Style.contentWrapper}>
+          <p className={Style.title}>{data?.title}</p>
+          <p className={Style.description}>{data?.description}</p>
+          <div className={Style.buttonWrapper}>
             <PlayButton movieId={data?.id} />
-            <button onClick={handleOpenModel} className={billboardSharedClasses.infoButton}>
+            <button onClick={handleOpenModel} className={Style.infoButton}>
               <AiOutlineInfoCircle className="text-white mr-2" size={20} />
               More Info
             </button>
           </div>
         </div>
-        <div className={billboardSharedClasses.muteButtonWrapper}>
+        <div className={Style.muteButtonWrapper}>
           <MuteButton videoRef={videRef} />
         </div>
       </div>

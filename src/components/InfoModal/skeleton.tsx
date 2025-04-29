@@ -10,18 +10,30 @@ const InfoModalSkeleton: React.FC = () => {
               <div className="bg-skeleton animate-skeleton w-6 h-6 rounded-full" />
             </div>
             <div className={Style.titleWrapper}>
-              <div className={`${Style.title} bg-skeleton animate-skeleton h-8 w-48 rounded`} />
+              <div className={`${Style.title} bg-skeleton animate-skeleton w-48 rounded`} >
+                <p className='opacity-0'> Lorem</p>
+              </div>
               <div className={Style.buttonWrapper}>
-                <div className="bg-skeleton animate-skeleton h-10 w-24 rounded" />
-                <div className="bg-skeleton animate-skeleton h-10 w-24 rounded" />
+                <div className="bg-skeleton animate-skeleton h-14 w-24 rounded" >
+                  <p className='opacity-0'> Play</p>
+                </div>
+                <div className="bg-skeleton animate-skeleton h-14 w-14 rounded-full" />
               </div>
             </div>
           </div>
           <div className={Style.contentWrapper}>
-            <div className={`${Style.label} bg-skeleton animate-skeleton h-4 w-16 rounded`} />
-            <div className={`${Style.text} bg-skeleton animate-skeleton h-4 w-32 mt-4 rounded`} />
-            <div className={`${Style.text} bg-skeleton animate-skeleton h-4 w-48 mt-4 rounded`} />
-            <div className={`${Style.text} bg-skeleton animate-skeleton h-4 w-full mt-4 rounded`} />
+            <div className={`${Style.label} bg-skeleton animate-skeleton  w-16 rounded`} >
+              <p className='opacity-0'> New</p>
+            </div>
+            <div className={`${Style.text} bg-skeleton animate-skeleton  w-32 mt-4 rounded`} >
+              <p className='opacity-0'> Lorem</p>
+            </div>
+            <div className={`${Style.text} bg-skeleton animate-skeleton  w-48 mt-4 rounded`} >
+              <p className='opacity-0'> Lorem ipsum dolor sit.</p>
+            </div>
+            <div className={`${Style.text} bg-skeleton animate-skeleton  w-full mt-4 rounded`} >
+              <p className='opacity-0'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.</p>
+            </div>
           </div>
         </div>
   );
