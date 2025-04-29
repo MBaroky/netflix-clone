@@ -4,7 +4,7 @@ import { env } from "process";
 
 // Components
 import InfoModal from "@/components/InfoModal";
-import MovieList from "@/components/MovieList";
+import MovieList from "@/components/MovieCard/MovieList";
 import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/BillBoard";
 import UserWelcome from "@/components/UserWelcome";

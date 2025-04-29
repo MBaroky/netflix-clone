@@ -1,5 +1,5 @@
 .container {
-  @apply z-50 transition duration-300 bg-black bg-opacity-80 w-full h-full fixed top-0 left-0 flex justify-center items-center overflow-y-auto overflow-x-hidden inset-0;
+  @apply z-50 transition duration-300 bg-black bg-opacity-80 w-full h-full fixed top-0 left-0 flex justify-center items-start overflow-y-auto overflow-x-hidden inset-0;
 }
 
 .modalWrapper {
@@ -39,9 +39,12 @@
 }
 
 .label {
-  @apply text-green-400 font-semibold text-lg;
+  @apply text-green-400 font-semibold text-lg mb-2;
 }
 
 .text {
-  @apply text-white text-lg;
+  @apply text-white text-lg mb-2;
+}
+.description {
+  @apply text-white text-lg mb-2 w-full;
 }
