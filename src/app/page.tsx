@@ -7,7 +7,6 @@ import InfoModal from "@/components/InfoModal";
 import MovieList from "@/components/MovieCard/MovieList";
 import Navbar from "@/components/navbar/Navbar";
 import Billboard from "@/components/sections/BillBoard";
-import UserWelcome from "@/components/UserWelcome";
 import VideoPlayer from "@/components/videoplayer/VideoPlayer";
 
 // Hooks

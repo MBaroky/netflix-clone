@@ -70,14 +70,47 @@ theme: {
 ```
 
 ### Custom Hooks
-Custom hooks are located in the `hooks` directory. For example:
+
+#### `useInfoModal`
+Located in `hooks/useInfoModal.ts`. Manages the state of the information modal.
+
+**Usage:**
 ```typescript
-// filepath: /home/mbaroky/netflix-clone/hooks/useAuth.ts
-// ...existing code...
-export const useAuth = () => {
-  // Logic for user authentication
-};
-// ...existing code...
+import InfoModal from "@/components/InfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
+
+const { openModal } = useInfoModal();
+
+return (
+  <>
+    <button onClick={() => openModal("movieId123")}>Open Info Modal</button>
+    <InfoModal />
+  </>
+);
+```
+
+#### `useScrollListener`
+Located in `hooks/useScrollListener.ts`. Listens for scroll events and executes a callback.
+
+**Usage:**
+```typescript
+import useScrollListener from "@/hooks/useScrollListener";
+
+useScrollListener((scrollY) => {
+  console.log("Scroll position:", scrollY);
+});
+```
+
+#### `useVideoDuration`
+Located in `hooks/useVideoDuration.ts`. Controls playback duration of a video element.
+
+**Usage:**
+```typescript
+import useVideoDuration from "@/hooks/useVideoDuration";
+import { useRef } from "react";
+
+const videoRef = useRef<HTMLVideoElement>(null);
+useVideoDuration({ videoRef, startTime: 10, stopTime: 20 });
 ```
 
 ### Utilities and Constants
@@ -109,21 +142,83 @@ export const formatDate = (date: string): string => {
 To add or modify utility functions, create or edit files in the `utils` directory.
 
 ### Components
-Components are located in the `components` directory. For example:
-```typescript
-// filepath: /home/mbaroky/netflix-clone/components/Navbar.tsx
-// ...existing code...
-const Navbar = () => {
-  return (
-    <nav>
-      {/* Navbar content */}
-    </nav>
-  );
-};
-export default Navbar;
-// ...existing code...
+
+#### `Skeleton`
+Located in `components/Skeleton.tsx`. Displays a skeleton loader for loading states.
+
+**Usage:**
+```tsx
+import Skeleton from "@/components/Skeleton";
+
+<Skeleton isLoading={true} className="w-32 h-8" placeholder="Loading...">
+  <p>Loaded Content</p>
+</Skeleton>;
 ```
-To add or modify a component, create or edit files in the `components` directory.
+
+#### `Loader`
+Located in `components/Loader.tsx`. Displays a spinning loader icon.
+
+**Usage:**
+```tsx
+import Loader from "@/components/Loader";
+
+<Loader />;
+```
+
+#### `WatchVideoPlayer`
+Located in `components/videoplayer/WatchVideoPlayer.tsx`. Plays a video for a specific movie.
+
+**Usage:**
+```tsx
+import WatchVideoPlayer from "@/components/videoplayer/WatchVideoPlayer";
+
+<WatchVideoPlayer movieId="movieId123" />;
+```
+
+#### `Toast`
+Located in `components/Toast/index.tsx`. Displays toast notifications.
+
+**Usage:**
+```tsx
+import Toast from "@/components/Toast";
+import { useToastStore } from "@/components/Toast/toastStore";
+
+const { showToast } = useToastStore();
+
+<button onClick={() => showToast("This is a success message", "success")}>
+  Show Success Toast
+</button>;
+
+<Toast />;
+```
+
+#### `MovieCard`
+Located in `components/MovieCard/index.tsx`. Displays a card for a movie with actions.
+
+**Usage:**
+```tsx
+import MovieCard from "@/components/MovieCard";
+
+<MovieCard data={movieData} />;
+```
+
+#### `InfoModal`
+Located in `components/InfoModal/index.tsx`. Displays detailed information about a movie.
+
+**Usage:**
+```tsx
+import InfoModal from "@/components/InfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
+
+const { openModal } = useInfoModal();
+
+return (
+  <>
+    <button onClick={() => openModal("movieId123")}>Open Info Modal</button>
+    <InfoModal />;
+  </>
+);
+```
 
 ### Global Types
 Global types are located in the `types` directory. For example:

@@ -5,6 +5,12 @@ import { useEffect } from "react";
  * @param {React.RefObject<HTMLVideoElement | null>} params.videoRef - The ref to the video element.
  * @param {number} params.startTime - The time in seconds to start the video from.
  * @param {number} params.stopTime - The time in seconds to stop the video at.
+ *
+ * @example
+ * const videoRef = useRef<HTMLVideoElement>(null);
+ * useVideoDuration({ videoRef, startTime: 10, stopTime: 20 });
+ *
+ * return <video ref={videoRef} src="video.mp4" />;
  */
 
 interface VideoDurationProps {
