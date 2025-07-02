@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 import serverAuth from "@/lib/serverAuth";
 import prismadb from "@/lib/prismadb";
+import { delayResponse } from "@/lib/delayResponse";
 
 async function handler(req: NextRequest) {
+    await delayResponse(2000);
     if (req.method !== 'GET') {
         return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
     }

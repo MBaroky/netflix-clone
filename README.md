@@ -42,9 +42,9 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:8080) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Inter](https://fonts.google.com/specimen/Inter), a modern and versatile font family.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Poppins](https://fonts.google.com/specimen/Poppins), a modern and versatile font family.
 
 ## Editing Features
 
@@ -53,7 +53,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 #### Tailwind CSS Skeleton Class
 To modify the skeleton class used for loading states, edit the `tailwind.config.js` file:
 ```javascript
-// filepath: /home/mbaroky/netflix-clone/tailwind.config.js
+// filepath: /tailwind.config.js
 // ...existing code...
 theme: {
   extend: {
@@ -111,6 +111,11 @@ import { useRef } from "react";
 
 const videoRef = useRef<HTMLVideoElement>(null);
 useVideoDuration({ videoRef, startTime: 10, stopTime: 20 });
+const Component = () =>{
+  return(
+    <video ref={videoRef} ></video>
+  )
+}
 ```
 
 ### Utilities and Constants
@@ -118,7 +123,7 @@ useVideoDuration({ videoRef, startTime: 10, stopTime: 20 });
 #### Constants
 Constants are located in the `utils/constants.ts` file. To modify or add constants, edit this file:
 ```typescript
-// filepath: /home/mbaroky/netflix-clone/utils/constants.ts
+// filepath: /utils/constants.ts
 // ...existing code...
 export const API_BASE_URL = 'https://api.example.com';
 export const DEFAULT_LANGUAGE = 'en-US';
@@ -130,7 +135,7 @@ export const MAX_ITEMS_PER_PAGE = 20;
 #### Utility Functions
 Utility functions are located in the `utils` directory. For example:
 ```typescript
-// filepath: /home/mbaroky/netflix-clone/utils/formatDate.ts
+// filepath: /utils/formatDate.ts
 // ...existing code...
 export const formatDate = (date: string): string => {
   // Logic to format a date string
@@ -151,7 +156,7 @@ Located in `components/Skeleton.tsx`. Displays a skeleton loader for loading sta
 import Skeleton from "@/components/Skeleton";
 
 <Skeleton isLoading={true} className="w-32 h-8" placeholder="Loading...">
-  <p>Loaded Content</p>
+  <p>{Loaded Data}</p>
 </Skeleton>;
 ```
 
@@ -223,7 +228,7 @@ return (
 ### Global Types
 Global types are located in the `types` directory. For example:
 ```typescript
-// filepath: /home/mbaroky/netflix-clone/types/index.d.ts
+// filepath: /types/index.d.ts
 // ...existing code...
 export interface Movie {
   id: string;

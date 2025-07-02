@@ -38,6 +38,11 @@ export async function POST(req: NextRequest) {
         hashedPassword,
         image: "",
         emailVerified: new Date(),
+        profiles: {
+          create: {
+            name: name || "New Profile",
+          },
+        },
       },
     });
 

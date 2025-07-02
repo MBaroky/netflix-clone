@@ -17,14 +17,14 @@ const authLayout = async ({
   return (
 
     <div className='
-    relative min-h-full w-full bg-[url(/images/hero.jpg)] bg-fixed bg-cover bg-center flex flex-col items-stretch justify-center
+    relative min-h-full w-full bg-[url(/images/hero.jpg)] bg-cover bg-center flex flex-col items-stretch justify-center
     '>
-        <div className="bg-black w-full h-full flex-grow pb-8 lg:bg-opacity-50">
+        <div className="w-full h-full flex-grow pb-8 lg:bg-opacity-0">
             <nav className='px-12 py-5'>
                 <img className='h-12' src="/images/logo.png" alt="logo" />
             </nav>
             <div className='flex justify-center'>
-               <div className='bg-black bg-opacity-70 px-16  py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full'>
+               <div className='bg-background bg-opacity-70 px-16  py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full'>
                   {children}
 
                   </div>

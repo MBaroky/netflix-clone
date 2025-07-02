@@ -9,9 +9,13 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111217;
+  --foreground: #e4e4e4;
   --skeleton-bg: #545454;
+  --gradient-start: #ED51F0;
+  --gradient-middle: #8A5CE5;
+  --gradient-end: #9A33FF;
+  --gradient: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,9 +29,10 @@ body {
   @apply bg-zinc-900 h-full overflow-x-hidden;
 
 }
-  .custom-scrollbar {
-    @apply scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900;
-  }
+
+.custom-scrollbar {
+  @apply scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900;
+}
 
 
 #__next {
