@@ -1,90 +1,113 @@
 "use client";
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import DropUp from './DropUp';
+import PlayPauseButton from '../controls/PlayPauseButton';
+import SeekButton from '../controls/SeekButton';
+import FullscreenButton from '../controls/FullscreenButton';
+import SeekBar from '../controls/SeekBar';
+import VolumeButton from '../controls/VolumeButton';
+import NextEpisodeButton from '../controls/NextEpisodeButton';
+import StarButton from '../controls/StarButton';
+import CommentButton from '../controls/CommentButton';
+import TitleInfo from '../controls/TitleInfo';
+import SettingsDropUp from '../controls/SettingsDropUp';
+import { formatTime } from '@/utils/formatTime';
 
 interface VideoControlsProps {
   videoRef: React.RefObject<HTMLVideoElement>;
-  isPlaying: boolean;
-  currentTime: number;
-  duration: number;
-  onPlayPause: () => void;
-  onSeek: (time: number) => void;
   playerRef?: React.RefObject<any>; // Add playerRef as optional
-  showSettings?: boolean;
-  onToggleSettings?: () => void;
   onFullscreen?: () => void; // Add fullscreen handler
   navVisible?: boolean; // Add navVisible for auto hide
-  // Add more props as needed for state and handlers
+  // No playback props needed, handled internally
 }
 
-const VideoControls: React.FC<VideoControlsProps> = ({ videoRef, isPlaying, currentTime, duration, onPlayPause, onSeek, playerRef, showSettings, onToggleSettings, onFullscreen, navVisible }) => {
+const VideoControls: React.FC<VideoControlsProps> = ({ videoRef, playerRef, onFullscreen, navVisible }) => {
+  const seekerRef = useRef<HTMLInputElement>(null);
+  const controlsAreaRef = useRef<HTMLDivElement>(null);
+  const [isHoveringControls, setIsHoveringControls] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  // Setup video event listeners for playback state
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const handleVideoEvents = (e: Event) => {
+      switch (e.type) {
+        case 'timeupdate': setCurrentTime(video.currentTime); break;
+        case 'durationchange': setDuration(video.duration); break;
+        case 'play': setIsPlaying(true); break;
+        case 'pause': setIsPlaying(false); break;
+      }
+    };
+    const events = ['timeupdate', 'durationchange', 'play', 'pause'];
+    events.forEach(event => video.addEventListener(event, handleVideoEvents));
+    return () => {
+      events.forEach(event => video.removeEventListener(event, handleVideoEvents));
+    };
+  }, [videoRef]);
+
+  // Play/pause handler for button only
+  const onPlayPause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  };
+
+  // Seek handler
+  const onSeek = (time: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = Math.max(0, Math.min(time, duration || 0));
+  };
+
+  // Prevent auto-hide when hovering controls
+  useEffect(() => {
+    if (!controlsAreaRef.current) return;
+    const handleMouseEnter = () => setIsHoveringControls(true);
+    const handleMouseLeave = () => setIsHoveringControls(false);
+    const el = controlsAreaRef.current;
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+    return () => {
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // If hovering controls, always show nav
+  const visible = navVisible || isHoveringControls;
+
   return (
     <div
-      className={`absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent flex flex-col transition-opacity duration-300 ${navVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      ref={controlsAreaRef}
+      className={`video-controls-ui absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent flex flex-col transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      style={{ pointerEvents: visible ? 'auto' : 'none' }}
     >
       {/* Progress bar with draggable seeker */}
-      <div className="flex items-center mb-2 relative">
-        <span className="text-white text-xs">{new Date(currentTime * 1000).toISOString().substr(11, 8)}</span>
-        <div className="flex-1 h-1 bg-gray-400 rounded overflow-hidden relative mx-2">
-          <div className="h-full bg-white" style={{ width: `${(currentTime / duration) * 100}%` }} />
-          {/* Seeker slider */}
-          <input
-            type="range"
-            min={0}
-            max={isNaN(duration) || duration === 0 ? 1 : duration}
-            step={0.01}
-            value={isNaN(currentTime) ? 0 : currentTime}
-            onChange={e => onSeek(Number(e.target.value))}
-            className="absolute top-0 left-0 w-full h-1 opacity-0 cursor-pointer"
-            style={{ WebkitAppearance: 'none', appearance: 'none' }}
-          />
-        </div>
-        <span className="text-white text-xs">{new Date((duration - currentTime) * 1000).toISOString().substr(11, 8)}</span>
-      </div>
+      <SeekBar currentTime={currentTime} duration={duration} onSeek={onSeek} />
       {/* Controls row */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-white text-sm font-bold">Stranger Things.S1.E10</span>
-          <span className="text-white text-xs">● Episodes</span>
-          <span className="text-white text-xs">Season 1 ▲</span>
+          <TitleInfo />
         </div>
         <div className="flex items-center gap-4">
-          {/* Replace with icons and handlers */}
-          <button className="text-white" onClick={() => onSeek(currentTime - 10)}>⏪</button>
-          <button className="text-white" onClick={onPlayPause}>{isPlaying ? '⏸️' : '▶️'}</button>
-          <button className="text-white" onClick={() => onSeek(currentTime + 10)}>⏩</button>
-          <button className="text-white">🔊</button>
+          <SeekButton direction="back" onSeek={onSeek} currentTime={currentTime} />
+          <PlayPauseButton isPlaying={isPlaying} onPlayPause={onPlayPause} />
+          <SeekButton direction="forward" onSeek={onSeek} currentTime={currentTime} />
+          <VolumeButton videoRef={videoRef} />
         </div>
         <div className="flex items-center gap-2">
-          <button className="text-white">Next Episode</button>
-          <button className="text-white">⭐</button>
-          <button className="text-white">💬</button>
-          <DropUp
-            trigger={<button className="text-white">⚙️</button>}
-            className="inline-block"
-          >
-            <div id='controls' className="bg-gray-700 bg-opacity-80 rounded-lg p-4 flex flex-col gap-2 min-w-[250px]">
-              <div className="flex items-center justify-between text-white">
-                <span>Quality</span>
-                <span>1080p</span>
-                <span>▶</span>
-              </div>
-              <div className="flex items-center justify-between text-white">
-                <span>Subtitles</span>
-                <span>Arabic</span>
-                <span>On</span>
-                <span>▶</span>
-              </div>
-              <div className="flex items-center justify-between text-white">
-                <span>Audio</span>
-                <span>English</span>
-                <span>▶</span>
-              </div>
-            </div>
-          </DropUp>
-          <button className="text-white ml-2" onClick={onFullscreen}>
-            ⛶
-          </button>
+          <NextEpisodeButton />
+          <StarButton />
+          <CommentButton />
+          <SettingsDropUp />
+          <FullscreenButton onFullscreen={onFullscreen!} />
         </div>
       </div>
     </div>
