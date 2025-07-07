@@ -1,13 +1,21 @@
 // components/ShakaPlayer.tsx
 import React, { useRef, useEffect } from 'react';
+import 'shaka-player/dist/controls.css';
 // @ts-ignore
-import shaka = require('shaka-player');
+import shaka from 'shaka-player';
+// @ts-ignore
+import 'shaka-player/dist/shaka-player.ui.js';
+// To use IMA ads, you must load the IMA SDK globally in your app, e.g.:
+// <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+// For Next.js, add this to _document.tsx or dynamically in your player component.
 import VideoControls from './VideoControls';
 import { useAutoHide } from '@/hooks/useAutoHide';
 
 interface ShakaPlayerProps {
   manifestUri: string;
 }
+
+const AD_TAG = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/vmap_ad_samples&sz=640x480&cust_params=sample_ar%3Dpreonly&ciu_szs=300x250%2C728x90&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=1';
 
 const ShakaPlayer: React.FC<ShakaPlayerProps> = ({ manifestUri }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -17,9 +25,18 @@ const ShakaPlayer: React.FC<ShakaPlayerProps> = ({ manifestUri }) => {
 
   useEffect(() => {
     const videoElement = videoRef.current;
-    if (!videoElement) return;
+    const containerElement = containerRef.current;
+    if (!videoElement || !containerElement) return;
     const player = new shaka.Player(videoElement);
     playerRef.current = player;
+
+    // IMA SDK integration (npm package: only use player.configure)
+    player.configure({
+      ads: {
+        clientSide: true,
+        adTagUrl: AD_TAG,
+      },
+    });
 
     player.load(manifestUri)
       .then(() => console.log('The video has now been loaded!'))

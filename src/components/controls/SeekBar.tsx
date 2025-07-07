@@ -15,7 +15,7 @@ const SeekBar: React.FC<SeekBarProps> = ({ currentTime, duration, onSeek }) => {
   return (
     <div className="flex items-center mb-2 relative">
       <span className="text-white text-xs">{formatTime(currentTime)}</span>
-      <div className="flex-1 h-1 bg-gray-400 rounded overflow-hidden relative mx-2">
+      <div className="flex-1 h-1 hover:h-2 transition duration-200 bg-gray-400 rounded overflow-hidden relative mx-2">
         <div className="h-full bg-white" style={{ width: `${(currentTime / duration) * 100}%` }} />
         <input
           type="range"
