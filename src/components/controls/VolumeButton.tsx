@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import Audio from '@/assets/icons/audioButton.svg';
+import AudioHalf from '@/assets/icons/audioHalfButton.svg';
+import Mute from '@/assets/icons/muteButton.svg';
+import ControlsButton from './ControlsButton';
+
 interface VolumeButtonProps {
   videoRef: React.RefObject<HTMLVideoElement>;
 }
@@ -62,17 +67,17 @@ const VolumeButton: React.FC<VolumeButtonProps> = ({ videoRef }) => {
       onMouseLeave={() => setHovered(false)}
       tabIndex={-1}
     >
-      <button
+      <ControlsButton
         className="text-white px-4"
         onClick={toggleMute}
         tabIndex={-1}
       >
         {isMuted || volume === 0
-          ? '🔇'
+          ? <img src={Mute.src} alt="Mute" />
           : volume < 0.5
-          ? '🔉'
-          : '🔊'}
-      </button>
+          ? <img src={AudioHalf.src} alt="Audio Half" />
+          : <img src={Audio.src} alt="Audio" />}
+      </ControlsButton>
       {hovered && (
         <div className="absolute left-full top-1/2 -translate-y-1/2 ml-0 flex items-center bg-black/80 p-2 rounded shadow-lg z-30 min-w-[80px]">
           <input

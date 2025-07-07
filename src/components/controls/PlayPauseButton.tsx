@@ -1,4 +1,8 @@
 import React from 'react';
+import PlayIcon from '@/assets/icons/playButton.svg'
+import PauseIcon from '@/assets/icons/pauseButton.svg'
+import ControlsButton from './ControlsButton';
+
 
 interface PlayPauseButtonProps {
   isPlaying: boolean;
@@ -6,9 +10,9 @@ interface PlayPauseButtonProps {
 }
 
 const PlayPauseButton: React.FC<PlayPauseButtonProps> = ({ isPlaying, onPlayPause }) => (
-  <button className="text-white" onClick={onPlayPause}>
-    {isPlaying ? '⏸️' : '▶️'}
-  </button>
+  <ControlsButton  onClick={onPlayPause}>
+    {isPlaying ? <img src={PauseIcon.src} /> : <img src={PlayIcon.src} />}
+  </ControlsButton>
 );
 
 export default PlayPauseButton;

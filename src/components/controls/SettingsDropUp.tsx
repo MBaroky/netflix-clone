@@ -1,9 +1,15 @@
 import React from 'react';
 import DropUp from '../videoplayer/DropUp';
+import Gear from '@/assets/icons/settingsButton.svg';
+import ControlsButton from './ControlsButton';
 
 const SettingsDropUp: React.FC = () => (
   <DropUp
-    trigger={<button className="text-white">⚙️</button>}
+    trigger={
+    <ControlsButton className="text-white">
+      <img src={Gear.src} alt="Settings" />
+    </ControlsButton>
+    }
     className="inline-block"
   >
     <div id='controls' className="bg-gray-700 bg-opacity-80 rounded-lg p-4 flex flex-col gap-2 min-w-[250px]">

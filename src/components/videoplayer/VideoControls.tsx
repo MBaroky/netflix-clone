@@ -8,7 +8,7 @@ import SeekBar from '../controls/SeekBar';
 import VolumeButton from '../controls/VolumeButton';
 import NextEpisodeButton from '../controls/NextEpisodeButton';
 import StarButton from '../controls/StarButton';
-import CommentButton from '../controls/CommentButton';
+import CaptionButton from '../controls/CaptionButton';
 import TitleInfo from '../controls/TitleInfo';
 import SettingsDropUp from '../controls/SettingsDropUp';
 import { formatTime } from '@/utils/formatTime';
@@ -105,7 +105,7 @@ const VideoControls: React.FC<VideoControlsProps> = ({ videoRef, playerRef, onFu
         <div className="flex items-center gap-2">
           <NextEpisodeButton />
           <StarButton />
-          <CommentButton />
+          <CaptionButton />
           <SettingsDropUp />
           <FullscreenButton onFullscreen={onFullscreen!} />
         </div>

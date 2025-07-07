@@ -1,4 +1,7 @@
 import React from 'react';
+import Rewind from '@/assets/icons/rewindButton.svg'
+import Forward from '@/assets/icons/forwardButton.svg'
+import ControlsButton from './ControlsButton';
 
 interface SeekButtonProps {
   direction: 'back' | 'forward';
@@ -7,12 +10,12 @@ interface SeekButtonProps {
 }
 
 const SeekButton: React.FC<SeekButtonProps> = ({ direction, onSeek, currentTime }) => (
-  <button
+  <ControlsButton
     className="text-white"
     onClick={() => onSeek(direction === 'back' ? currentTime - 10 : currentTime + 10)}
   >
-    {direction === 'back' ? '⏪' : '⏩'}
-  </button>
+    {direction === 'back' ? <img src={Rewind.src} /> : <img src={Forward.src} />}
+  </ControlsButton>
 );
 
 export default SeekButton;
