@@ -9,6 +9,14 @@ import Loader from "@/components/Loader";
 // Hooks
 import useMovie from "@/hooks/useMovie";
 import { useRouter } from "next/navigation";
+import { useAutoHide } from '@/hooks/useAutoHide';
+
+import dynamic from 'next/dynamic';
+import React from 'react';
+
+const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/ShakaPlayer'), {
+  ssr: false, // This is crucial for client-side only rendering
+});
 
 interface WatchVideoPlayerProps {
     movieId: string;
@@ -17,6 +25,7 @@ interface WatchVideoPlayerProps {
 const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
     const { data, isLoading } = useMovie(movieId)
     const router = useRouter();
+    const [navVisible, playerAreaRef] = useAutoHide(2000);
 
     if(isLoading) {
         return (
@@ -26,8 +35,8 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
         )
     }
     return (
-      <div className='h-screen w-screen bg-black'>
-          <nav className='fixed w-full z-10 p-4 bg-black bg-opacity-70 flex flex-row items-center gap-8'>
+      <div ref={playerAreaRef} className='h-screen w-screen bg-black relative'>
+          <nav className={`fixed w-full z-10 p-4 bg-black bg-opacity-70 flex flex-row items-center gap-8 transition-opacity duration-300 ${navVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <AiOutlineArrowLeft
               className='text-white cursor-pointer'
               size={30}
@@ -38,15 +47,14 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
               {data.title}
             </p>
           </nav>
-
-          <video
+          <ShakaPlayerComponent manifestUri={data.videoUrl} />
+          {/* <video
             autoPlay
             controls
             src={data.videoUrl}
-            className='h-full w-full'></video>
+            className='h-full w-full'></video> */}
         </div>
     )
-
   }
 
   export default WatchVideoPlayer;
