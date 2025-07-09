@@ -14,8 +14,8 @@ import { useAutoHide } from '@/hooks/useAutoHide';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-// const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/ShakaPlayer'), {
-const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/CustomShakaPlayer'), {
+const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/ShakaPlayer'), {
+// const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/CustomShakaPlayer'), {
   ssr: false, // This is crucial for client-side only rendering
 });
 
@@ -52,8 +52,8 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
               {data.title}
             </p>
           </nav>
-          <ShakaPlayerComponent src={data.videoUrl} adTagUrl={imaOptions.adTagUrl} />
-          {/* <ShakaPlayerComponent manifestUri={data.videoUrl} /> */}
+          {/* <ShakaPlayerComponent src={data.videoUrl} adTagUrl={imaOptions.adTagUrl} /> */}
+          <ShakaPlayerComponent manifestUri={data.videoUrl}  />
           {/* <video
             autoPlay
             controls
