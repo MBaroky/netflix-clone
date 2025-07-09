@@ -14,7 +14,8 @@ import { useAutoHide } from '@/hooks/useAutoHide';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/ShakaPlayer'), {
+// const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/ShakaPlayer'), {
+const ShakaPlayerComponent = dynamic(() => import('@/components/videoplayer/CustomShakaPlayer'), {
   ssr: false, // This is crucial for client-side only rendering
 });
 
@@ -26,6 +27,10 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
     const { data, isLoading } = useMovie(movieId)
     const router = useRouter();
     const [navVisible, playerAreaRef] = useAutoHide(2000);
+
+  var imaOptions = {
+    adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/vmap_ad_samples&sz=640x480&cust_params=sample_ar%3Dpreonly&ciu_szs=300x250%2C728x90&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=1'
+  };
 
     if(isLoading) {
         return (
@@ -47,7 +52,8 @@ const WatchVideoPlayer:React.FC<WatchVideoPlayerProps> = ({movieId}) => {
               {data.title}
             </p>
           </nav>
-          <ShakaPlayerComponent manifestUri={data.videoUrl} />
+          <ShakaPlayerComponent src={data.videoUrl} adTagUrl={imaOptions.adTagUrl} />
+          {/* <ShakaPlayerComponent manifestUri={data.videoUrl} /> */}
           {/* <video
             autoPlay
             controls
